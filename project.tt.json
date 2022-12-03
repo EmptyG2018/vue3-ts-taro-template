@@ -1,0 +1,13 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "template",
+  "description": "福利商城",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram"
+}
