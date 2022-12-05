@@ -1,29 +1,26 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "moduleResolution": "NodeNext",
-    "experimentalDecorators": true,
-    "noImplicitAny": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "strictNullChecks": true,
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
     "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
     "baseUrl": ".",
     "rootDir": ".",
-    "jsx": "preserve",
-    "allowJs": true,
-    "resolveJsonModule": true,
     "paths": {
       "@/*": [
         "src/*"
       ],
       "@components/*": [
         "src/components/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
       ],
       "@services/*": [
         "src/services/*"
@@ -49,5 +46,4 @@
   "exclude": [
     ".plop/*"
   ],
-  "compileOnSave": false
 }

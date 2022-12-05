@@ -1,4 +1,4 @@
-import pkage from './package.json';
+import pkage from '../package.json';
 
 export default {
   // 版本

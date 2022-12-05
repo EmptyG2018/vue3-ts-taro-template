@@ -1,0 +1,7 @@
+export default definePageConfig({
+  {{#if custom}}
+  navigationStyle: 'custom',
+  {{else}}
+  navigationBarTitleText: '{{title}}',
+  {{/if}}
+});
