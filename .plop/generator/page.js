@@ -16,8 +16,13 @@ module.exports = {
   actions: [
     {
       type: 'add',
-      path: 'src/views/{{properCase name}}.vue',
+      path: 'src/pages/{{lowerCase name}}/index.vue',
       templateFile: '.plop/template/page.vue',
+    },
+    {
+      type: 'add',
+      path: 'src/pages/{{lowerCase name}}/index.scss',
+      templateFile: '.plop/template/style.scss',
     },
   ],
 };
