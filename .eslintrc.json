@@ -4,22 +4,13 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "plugin:vue/vue3-recommended",
-    "standard",
-    "prettier"
-  ],
+  "extends": ["plugin:vue/vue3-recommended", "standard", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "parser": "@typescript-eslint/parser",
     "sourceType": "module"
   },
-  "plugins": [
-    "vue",
-    "@typescript-eslint",
-    "import",
-    "prettier"
-  ],
+  "plugins": ["vue", "@typescript-eslint", "import", "prettier"],
   "rules": {
     "prettier/prettier": "error",
     "vue/multi-word-component-names": "off"
@@ -28,14 +19,8 @@
     "import/resolver": {
       "alias": {
         "map": [
-          [
-            "@",
-            "./src"
-          ],
-          [
-            "#",
-            "./src/components"
-          ]
+          ["@", "./src"],
+          ["#", "./src/components"]
         ]
       }
     }

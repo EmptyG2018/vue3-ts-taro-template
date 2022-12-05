@@ -20,5 +20,5 @@ node_modules
 
 plopfile.js
 
-vite.config.ts
-vite.config.js
+*.config.ts
+*.config.js

@@ -3,8 +3,8 @@
     <view>
       <img src="" alt="" />
     </view>
-    {{ counter.counter }}
     {{ state.msg }}
+    <Demo />
     <view class="btn">
       <nut-button type="primary" @click="handleClick('text', state.msg2, true)"
         >点我</nut-button
@@ -23,9 +23,7 @@
 
 <script setup>
 import { reactive } from 'vue';
-import { useCounterStore } from '../../store';
-
-const counter = useCounterStore();
+import Demo from '@components/demo.vue';
 
 const state = reactive({
   msg: '欢迎使用 NutUI3.0 开发小gweg',
@@ -40,10 +38,6 @@ const handleClick = (type, msg, cover = false) => {
   state.msg2 = msg;
   state.type = type;
   state.cover = cover;
-};
-
-const onAdd = () => {
-  counter.count++;
 };
 </script>
 
