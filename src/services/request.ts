@@ -3,14 +3,17 @@ import wxConfig from '@/wx.config';
 
 const { host, timeout } = wxConfig;
 
-const request = async (url, options, isAuth = true) => {
+const request = async <T = any>(url, options, isAuth = true) => {
   try {
-    const requestOk = Taro.request({
+    const requestOk = await Taro.request<T>({
       url: host + url,
       timeout,
+      header: {
+        Authorization: isAuth ? Taro.getStorageSync('token') : undefined,
+      },
       ...options,
     });
-    if (requestOk.code === 200) {
+    if (requestOk.statusCode === 200) {
       return requestOk.data;
     } else {
       throw Error(requestOk.msg);

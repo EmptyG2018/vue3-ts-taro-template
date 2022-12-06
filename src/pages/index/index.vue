@@ -1,9 +1,12 @@
 <template>
   <view class="index">
-    <Title title="福利商城" />
-    <view class="line">{{ state.title }}</view>
-    <view class="line">{{ state.host }}</view>
-    <view class="line">{{ state.version }}</view>
+    <Title title="www" />
+    <view class="line">
+      {{ state.host }}
+    </view>
+    <view class="line">
+      {{ state.version }}
+    </view>
     <view class="line">
       <button type="primary" @click="counterStore.increment">+</button>
       <text>{{ counterStore.count }}</text>
@@ -13,9 +16,9 @@
       <button @click="navigateTo({ url: '/pages/home/index' })">跳转</button>
     </view>
     <view class="btn">
-      <nut-button type="primary" @click="handleClick('text', state.msg2, true)"
-        >欢迎使用NutUI 3.0</nut-button
-      >
+      <nut-button type="primary" @click="handleClick('text', state.msg2, true)">
+        欢迎使用NutUI 3.0
+      </nut-button>
     </view>
 
     <nut-toast
@@ -29,17 +32,14 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import wxConfig from '@/wx.config';
-import Title from '@components/Title.vue';
+import Title from '../../components/Title.vue';
 import useShow from '@hooks/useShow';
 import { useCounterStore } from '@stores/counter';
 import { navigateTo, useDidShow, useLoad } from '@tarojs/taro';
-import { delay } from '@utils/index';
+import wxConfig from '@/wx.config';
 
 const { state: welcome, show: showWelcome } = useShow(false);
 const counterStore = useCounterStore();
-
-console.log('delay', delay);
 
 type StateProps = {
   version: string;

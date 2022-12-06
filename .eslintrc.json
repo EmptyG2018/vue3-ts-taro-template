@@ -6,8 +6,10 @@
   },
   "parser": "vue-eslint-parser",
   "extends": [
-    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "standard",
+    "plugin:vue/vue3-recommended",
     "prettier"
   ],
   "parserOptions": {
@@ -18,41 +20,13 @@
   "plugins": [
     "vue",
     "@typescript-eslint",
-    "import",
     "prettier"
   ],
   "rules": {
     "prettier/prettier": "error",
     "vue/multi-word-component-names": "off",
     "vue/valid-v-for": "off",
-    "vue/require-v-for-key": "off"
-  },
-  "settings": {
-    "import/resolver": {
-      "alias": {
-        "map": [
-          [
-            "@/*",
-            "./src/*"
-          ],
-          [
-            "@components/*",
-            "./src/components/*"
-          ],
-          [
-            "@services/*",
-            "./src/components/*"
-          ],
-          [
-            "@stores/*",
-            "./src/components/*"
-          ],
-          [
-            "@utils/*",
-            "./src/components/*"
-          ]
-        ]
-      }
-    }
+    "vue/require-v-for-key": "off",
+    "@typescript-eslint/no-namespace": "off"
   }
 }

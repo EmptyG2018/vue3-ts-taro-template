@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 
-const useShow = (initial: boolean = true) => {
+const useShow = (initial = true) => {
   const state = ref(initial);
 
   const hide = () => {
