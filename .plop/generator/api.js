@@ -17,7 +17,7 @@ module.exports = {
     {
       type: 'add',
       path: 'src/services/{{name}}.ts',
-      templateFile: '.plop/template/api.ts',
+      templateFile: '.plop/template/api.hbs',
     },
   ],
 };

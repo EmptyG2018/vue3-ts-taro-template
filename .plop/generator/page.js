@@ -1,6 +1,6 @@
 const pageStyleMap = {
-  '默认样式': false,
-  '自定义导航栏': true,
+  默认样式: false,
+  自定义导航栏: true,
 };
 
 const getPageStyle = () => {
@@ -52,16 +52,12 @@ module.exports = {
         templateFile: '.plop/template/page_config.hbs',
         data: {
           custom: pageStyleMap[data.style],
-          title: data.title,
         },
       },
       {
         type: 'add',
         path: 'src/pages/{{lowerCase name}}/index.vue',
         templateFile: '.plop/template/page.hbs',
-        data: {
-          title: data.title,
-        },
       },
       {
         type: 'add',

@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
-import application from '@/application.config';
+import wxConfig from '@/wx.config';
 import Title from '@components/Title.vue';
 import useShow from '@hooks/useShow';
 import { useCounterStore } from '@stores/counter';
@@ -51,8 +51,8 @@ type StateProps = {
 };
 
 const state = reactive<StateProps>({
-  version: application.version,
-  host: application.host,
+  version: wxConfig.version,
+  host: wxConfig.host,
   msg: '欢迎使用 NutUI3.0 开发',
   msg2: '你成功了～',
   type: 'text',

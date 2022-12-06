@@ -1,0 +1,13 @@
+import request from './request';
+import { delay } from '@utils/index';
+
+export const GetDemo = async () => {
+  await delay(2000);
+  return {
+    code: 200,
+    msg: 'ok',
+    data: [
+      { id: 1, msg: 'this is demo.' }
+    ]
+  }
+};

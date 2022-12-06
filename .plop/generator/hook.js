@@ -17,7 +17,7 @@ module.exports = {
     {
       type: 'add',
       path: 'src/hooks/use{{properCase name}}.ts',
-      templateFile: '.plop/template/hook.ts',
+      templateFile: '.plop/template/hook.hbs',
     },
   ],
 };

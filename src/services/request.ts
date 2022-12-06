@@ -1,13 +1,13 @@
 import Taro from '@tarojs/taro';
-import applicationConfig from '../../application.config';
+import wxConfig from '@/wx.config';
 
-const { host, timeout } = applicationConfig;
+const { host, timeout } = wxConfig;
 
 const request = async (url, options, isAuth = true) => {
   try {
     const requestOk = Taro.request({
       url: host + url,
-      timeout: timeout,
+      timeout,
       ...options,
     });
     if (requestOk.code === 200) {
