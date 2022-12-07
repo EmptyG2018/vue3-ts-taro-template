@@ -6,9 +6,7 @@
   },
   "parser": "vue-eslint-parser",
   "extends": [
-    "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "standard",
     "plugin:vue/vue3-recommended",
     "prettier"
   ],
@@ -27,6 +25,6 @@
     "vue/multi-word-component-names": "off",
     "vue/valid-v-for": "off",
     "vue/require-v-for-key": "off",
-    "@typescript-eslint/no-namespace": "off"
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

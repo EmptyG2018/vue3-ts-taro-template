@@ -1,6 +1,9 @@
 {
-  "src/*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-  "src/*.vue": ["eslint --fix", "prettier --write"],
-  "src/*.{scss,html}": ["prettier --write"],
+  "src/**/*.{js,jsx,ts,tsx,vue}": [
+    "eslint --ext",
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "src/**/*.{css,scss,html,json}": ["prettier --write"],
   "*.md": ["prettier --write"]
 }

@@ -6,6 +6,7 @@
 const props = withDefaults(
   defineProps<{
     title: string;
+    msg: number;
   }>(),
   {
     title: '标题',

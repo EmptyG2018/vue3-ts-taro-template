@@ -1,4 +1,5 @@
 import request from './request';
+import { delay } from '@utils/index';
 
 /**
  * @title API方法变量前缀命名说明
@@ -15,3 +16,14 @@ export const GetProfile = (params: Params.Login) =>
     method: 'get',
     data: params,
   });
+
+export const GetDemo = async () => {
+  await delay(1000);
+  // throw new Error('error code: 500');
+  return [
+    {
+      id: 1,
+      title: 'one',
+    },
+  ];
+};

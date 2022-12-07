@@ -10,11 +10,11 @@
 *.woff
 *.ttf
 
-/dist/*
-/public/*
-/docs/*
-
 node_modules
+
+config/*
+dist/*
+types/*
 
 .dockerfile
 

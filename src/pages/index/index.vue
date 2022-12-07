@@ -1,6 +1,6 @@
 <template>
   <view class="index">
-    <Title title="www" />
+    <Title :msg="1" />
     <view class="line">
       {{ state.host }}
     </view>
@@ -33,12 +33,12 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import Title from '../../components/Title.vue';
-import useShow from '@hooks/useShow';
+import { useVisible } from '@hooks/index';
 import { useCounterStore } from '@stores/counter';
 import { navigateTo, useDidShow, useLoad } from '@tarojs/taro';
 import wxConfig from '@/wx.config';
 
-const { state: welcome, show: showWelcome } = useShow(false);
+const { visible: welcome, showVisible: showWelcome } = useVisible(false);
 const counterStore = useCounterStore();
 
 type StateProps = {
