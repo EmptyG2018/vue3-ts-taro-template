@@ -22,9 +22,9 @@ const usePage = <T = any>(
     onFinally,
   } = option;
 
-  const run = async (runOption?: Pick<PageOption, 'pullDownRefresh'>) => {
-    const { pullDownRefresh } = runOption;
-    console.log('gwegewg', pullDownRefresh);
+  const run = async (runOption?: { pullDownRefresh?: boolean }) => {
+    // const { pullDownRefresh } = runOption;
+    // console.log()
   };
 };
 
