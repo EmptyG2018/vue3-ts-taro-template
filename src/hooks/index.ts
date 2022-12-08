@@ -3,4 +3,4 @@ export { default as useToggle } from './useToggle';
 export { default as useLoading } from './useLoading';
 export { default as usePaging } from './usePaging';
 export { default as useRequest } from './useRequest';
-export { default as usePage } from './usePage';
+export { default as useLoadRefresh } from './useLoadRefresh';
