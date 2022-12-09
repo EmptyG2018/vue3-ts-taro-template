@@ -3,7 +3,6 @@
 > 描述内容
 
 
-
 - [技术栈]()
 - [规范标准]()
 - [IDE插件]()
@@ -53,11 +52,11 @@
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-- [bem css样式命名规范](https://getbem.com/)
+- [JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
 
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-
-
+- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 webstorm、以及其他ide后续更新。
 
@@ -163,15 +162,11 @@ npm run deps
 
 在taro框架下开发vue 3.0项目时，已经支持vue devtools工具代码调试，但仍处于实验性阶段，可能存在一些的调试问题。
 
-
-
 下载依赖包
 
 ```shell
 yarn add --dev @tarojs/plugin-vue-devtools
 ```
-
-
 
 配置taro插件
 
@@ -185,10 +180,8 @@ config = {
   // ...
 }
 ```
-
-
-
 重跑项目即可。
+
 
 
 
@@ -213,8 +206,6 @@ module.exports = {
 
 ```
 
-
-
 可在代码直接使用
 
 ```javascript
@@ -224,6 +215,7 @@ console.log(REQUEST_URL);
 ```
 
 如有不清楚，也可访问官方提供的针对[环境变量](https://taro-docs.jd.com/docs/config-detail#env)的说明。
+
 
 
 
@@ -252,8 +244,6 @@ module.exports = {
 };
 
 ```
-
-
 
 针对TS语法的项目中，同时**还需要配置TS别名，以更好地配置TS语法自动填充、语法检测、跳转等功能**，配置如下：
 
@@ -296,8 +286,6 @@ module.exports = {
 ```
 
 该项目中，已配置`src`、`components`、`hooks`、`services`、`stores`、`utils`、`dicts`路径别名，已满足绝大部分的需求。
-
-
 
 在代码使用
 
