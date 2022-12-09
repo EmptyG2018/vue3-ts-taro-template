@@ -4,10 +4,9 @@
 
 
 
-
-
 - [技术栈]()
 - [规范标准]()
+- [IDE插件]()
 - [项目结构]()
 - [npm脚本]()
 - [代码调试]()
@@ -16,55 +15,23 @@
 
 
 
-
-
-
-
 ### 技术栈
 
 目前该项目采用以下技术栈：
 
-- #### [微信小程序官方开发文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
+- [微信小程序官方开发文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
 
+- [Taro](https://taro-docs.jd.com/docs/) 是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。
 
+- [Vue3](https://cn.vuejs.org/) Vue 3.0 是渐进式JavaScript 框架，易学易用，性能出色，适用场景丰富的 Web 前端框架。
 
-- #### [Taro](https://taro-docs.jd.com/docs/)
+- [TypeScript](https://www.tslang.cn/) 是一种基于 JavaScript 构建的强类型编程语言，可为您提供任何规模的更好工具。
 
-  ###### Taro 是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。
+- [SCSS](https://www.sass.hk/) 是一款强化 CSS 的辅助工具。
 
+- [Nut-UI](https://nutui.jd.com/#/) 是京东风格的轻量级移动端 Vue 组件库。
 
-
-- #### [Vue3](https://cn.vuejs.org/)
-
-  ###### Vue 3.0 是渐进式JavaScript 框架，易学易用，性能出色，适用场景丰富的 Web 前端框架。
-
-
-
-- #### [TypeScript](https://www.tslang.cn/)
-
-  ###### TypeScript 是一种基于 JavaScript 构建的强类型编程语言，可为您提供任何规模的更好工具。
-
-
-
-- #### [SCSS](https://www.sass.hk/)
-
-  ###### Sass 是一款强化 CSS 的辅助工具，它在 CSS 语法的基础上增加了变量 (variables)、嵌套 (nested rules)、混合 (mixins)、导入 (inline imports) 等高级功能，这些拓展令 CSS 更加强大与优雅。使用 Sass 以及 Sass 的样式库（如 Compass）有助于更好地组织管理样式文件，以及更高效地开发项目。
-
-
-
-- #### [Nut-UI](https://nutui.jd.com/#/)
-
-- ###### Nut-UI 是京东风格的轻量级移动端 Vue 组件库
-
-
-
-- #### [Pinia](https://pinia.vuejs.org/)
-
-  ###### Pinia 是拥有组合式 API 的 Vue 状态管理库，同时支持 Vue 2 和 Vue 3
-
-
-
-
+- [Pinia](https://pinia.vuejs.org/) 是拥有组合式 API 的 Vue 状态管理库。
 
 
 
@@ -72,31 +39,39 @@
 
 目前该项目采用以下规范标准：
 
-- #### [vue 语法规范规则](https://vuejs.org/style-guide/rules-recommended.html)
-
-- #### [Standard  js语法规范规则](https://standardjs.com/)
-
-- #### [bem css样式命名规范](https://getbem.com/)
+- [vue 语法规范规则](https://vuejs.org/style-guide/rules-recommended.html)
+- [Standard  js语法规范规则](https://standardjs.com/)
+- [bem css样式命名规范](https://getbem.com/)
 
 
 
+### IDE插件
 
+采用vs code开发，需安装以下插件，方便项目开发，其作用编码、风格、自动填充、语法高亮等辅助功能。
+
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+- [bem css样式命名规范](https://getbem.com/)
+
+
+
+
+
+webstorm、以及其他ide后续更新。
 
 
 
 ### 项目结构
 
-![tree](.\docs\tree.png)
-
-
-
-
+![tree](./docs/tree.png)
 
 
 
 ### npm 脚本
 
-#### 安装依赖
+安装依赖
 
 ```shell
 # 使用 npm
@@ -106,9 +81,7 @@ npm install
 yarn
 ```
 
-
-
-#### 开发环境运行
+开发环境运行
 
 ```shell
 # 使用 npm
@@ -118,153 +91,104 @@ npm run dev:weapp
 yarn dev:weapp
 ```
 
-
-
-#### 生产环境运行
+生产环境运行
 
 ```shell
-# 使用 npm
 npm run prd:weapp
-
-# OR 使用 yarn
-yarn prd:weapp
 ```
 
-
-
-#### 开发环境打包
+开发环境打包
 
 ```shell
-# 使用 npm
 npm run build:dev:weapp
-
-# OR 使用 yarn
-yarn build:dev:weapp
 ```
 
-
-
-#### 生产环境打包
+生产环境打包
 
 ```shell
-# 使用 npm
 npm run build:prd:weapp
-
-# OR 使用 yarn
-yarn build:prd:weapp
 ```
 
-
-
-#### 代码检测
+代码检测
 
 ```shell
-# 使用 npm
 npm run lint:eslint
-
-# OR 使用 yarn
-yarn lint:eslint
 ```
 
-
-
-#### 代码检查（仅限修改文件）
+代码检查（仅限修改文件）
 
 ```shell
-# 使用 npm
 npm run lint:lint-staged
-
-# OR 使用 yarn
-yarn lint:lint-staged
 ```
 
-
-
-#### 修复代码
+修复代码
 
 ```shell
-# 使用 npm
 npm run fix:eslint
-
-# OR 使用 yarn
-yarn fix:eslint
 ```
 
-
-
-#### 格式化代码
+格式化代码
 
 ```shell
-# 使用 npm
 npm run fix:prettier
-
-# OR 使用 yarn
-yarn fix:prettier
 ```
 
-
-
-#### 安装 git hook 管理
+安装 git hook 管理
 
 ```shell
-# 使用 npm
 npm run prepare
-
-# OR 使用 yarn
-yarn prepare
 ```
 
-
-
-#### commit 提交（包含规范描述）
+commit 提交（包含规范描述）
 
 ```shell
-# 使用 npm
 npm run commit
-
-# OR 使用 yarn
-yarn commit
 ```
 
-
-
-#### 生成模板
+生成模版
 
 ```shell
-# 使用 npm
 npm run plop
-
-# OR 使用 yarn
-yarn plop
 ```
 
-
-
-#### 升级依赖
+升级依赖
 
 ```shell
-# 使用 npm
 npm run deps
-
-# OR 使用 yarn
-yarn deps
 ```
-
-
-
-
-
-
 
 
 
 ### 代码调试
 
-在taro框架下开发vue 3.0项目时，已经支持vue devtools工具代码调试，但仍有xu'qiu
+在taro框架下开发vue 3.0项目时，已经支持vue devtools工具代码调试，但仍处于实验性阶段，可能存在一些的调试问题。
 
 
 
+下载依赖包
 
+```shell
+yarn add --dev @tarojs/plugin-vue-devtools
+```
+
+
+
+配置taro插件
+
+```javascript
+// config/dev.js
+
+config = {
+  plugins: [
+    '@tarojs/plugin-vue-devtools'
+  ],
+  // ...
+}
+```
+
+
+
+重跑项目即可。
 
 
 
@@ -273,7 +197,7 @@ yarn deps
 在项目根目录中的`config`目录中包含**dev.js (开发环境)**、**prod.js (生产环境)**这两个文件中，在`defineConstants`字段可定义变量。**需要注意在定义变量需要`JSON.stringify`方法包裹使用**。案例见以下：
 
 ```javascript
-// dev.js （开发环境）
+// config/dev.js （开发环境）
 
 module.exports = {
   env: {
@@ -303,9 +227,6 @@ console.log(REQUEST_URL);
 
 
 
-
-
-
 ### 别名引用
 
 通过别名引用配置可以简化很长的模块引用，也很好地解决vs code不能跳转相对应文件中，以减少开发者对路径问题的烦恼。
@@ -313,7 +234,7 @@ console.log(REQUEST_URL);
 在项目根目录中的`config`目录中包含**index.js(通用环境)**这个文件中，在`alias`字段可定义路径别名。
 
 ```javascript
-// index.js （通用环境）
+// config/index.js （通用环境）
 const path = require('path');
 
 module.exports = {
@@ -325,6 +246,7 @@ module.exports = {
     '@services': path.resolve(__dirname, '..', 'src/services'),
     '@stores': path.resolve(__dirname, '..', 'src/stores'),
     '@utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@dicts': path.resolve(__dirname, '..', 'src/dicts')
   },
   ...
 };
