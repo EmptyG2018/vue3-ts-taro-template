@@ -1,70 +1,33 @@
-import { ref } from 'vue';
-import useLoading from './useLoading';
+import useAsync from './useAsync';
+import type { AsyncService, AsyncOption } from './useAsync';
 
 type Records = Record<string, any>;
 
-type RequestOption<T = any> = {
-  immediate?: boolean;
+type RequestOption<T = any> = AsyncOption<T> & {
   defaultParams?: Records;
-  onBefore?: (params?: Records) => void;
-  onSuccess?: (result: T, params?: Records) => void;
-  onError?: (error: any) => void;
-  onFinally?: (params: Records | undefined, result: any, err: any) => void;
 };
 
 const useRequest = <T = any>(
-  service: (params?: Records) => Promise<T>,
+  service: AsyncService<T>,
   option: RequestOption<T> = {}
 ) => {
-  const { loading, showLoading, hideLoading } = useLoading(false);
+  const { defaultParams, ...rest } = option;
 
-  const data = ref<T>();
+  const {
+    data,
+    loading,
+    error,
+    run: runAsync,
+  } = useAsync(service, {
+    immediate: false,
+    ...rest,
+  });
 
-  const error = ref<any>();
-
-  const { immediate, defaultParams, onBefore, onSuccess, onError, onFinally } =
-    option;
-
-  const run = async (syncParams?: Records) => {
-    resetStateData();
-
-    if (typeof service !== 'function') return false;
-
+  const run = (syncParams?: Records) => {
     const params = syncParams || defaultParams;
 
-    typeof onBefore === 'function' && onBefore(params);
-
-    showLoading();
-
-    try {
-      const result = await service(params);
-      data.value = result;
-
-      if (typeof onSuccess === 'function') {
-        onSuccess(data.value, params);
-        return data.value;
-      }
-    } catch (err: any) {
-      error.value = err;
-
-      if (typeof onError === 'function') {
-        onError(error.value);
-        return err;
-      }
-    } finally {
-      hideLoading();
-
-      typeof onFinally === 'function' &&
-        onFinally(params, data.value, error.value);
-    }
+    return runAsync(params);
   };
-
-  const resetStateData = () => {
-    data.value = undefined;
-    error.value = undefined;
-  };
-
-  if (immediate) run();
 
   return {
     data,
