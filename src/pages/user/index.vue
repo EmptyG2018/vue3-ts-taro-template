@@ -36,10 +36,12 @@
   <nut-button type="primary" :loading="loading" @click="send">
     欢迎使用NutUI 3.0
   </nut-button>
+
+  <view :style="{ height: '1000px' }"> 1000 </view>
 </template>
 
 <script setup lang="ts">
-import { useLoadRefresh, useRequest } from '@/hooks';
+import { useLoadRefresh, useRequest, useLoadDrop } from '@/hooks';
 import { GetDemo } from '@/services';
 
 const {
@@ -61,6 +63,8 @@ const {
   immediate: false,
   defaultParams: {},
 });
+
+useLoadDrop();
 
 const { run, loading } = useLoadRefresh(
   async () => {
