@@ -3,14 +3,34 @@
 > 描述内容
 
 
-- [技术栈](#别名引用)
-- [规范标准](#规范标准)
-- [IDE插件](#IDE插件)
+
+### 快捷入口
+
+[Vue 3.0](https://cn.vuejs.org/guide/introduction.html)
+
+[Taro内置组件库](https://taro-docs.jd.com/docs/components-desc)
+
+[Nut-UI组件库](https://nutui.jd.com/#/zh-CN/component/button)
+
+[常见GIt命令大全](./docs/git.md)
+
+[常见Hook语法](./docs/hook.md)
+
+
+
+### 目录
+
+
+- [技术栈](#技术栈)
 - [项目结构](#项目结构)
 - [npm脚本](#npm脚本)
-- [代码调试](#代码调试)
+- [IDE插件](#IDE插件)
+- [规范标准](#规范标准)
+- [风格规范](#风格规范)
 - [环境变量](#环境变量)
+- [代码调试](#代码调试)
 - [别名引用](#别名引用)
+- [开发人员](#开发人员)
 
 
 
@@ -19,46 +39,13 @@
 目前该项目采用以下技术栈：
 
 - [微信小程序官方开发文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
-
 - [Taro](https://taro-docs.jd.com/docs/) 是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。
-
 - [Vue3](https://cn.vuejs.org/) Vue 3.0 是渐进式JavaScript 框架，易学易用，性能出色，适用场景丰富的 Web 前端框架。
-
 - [TypeScript](https://www.tslang.cn/) 是一种基于 JavaScript 构建的强类型编程语言，可为您提供任何规模的更好工具。
-
 - [SCSS](https://www.sass.hk/) 是一款强化 CSS 的辅助工具。
-
 - [Nut-UI](https://nutui.jd.com/#/) 是京东风格的轻量级移动端 Vue 组件库。
-
 - [Pinia](https://pinia.vuejs.org/) 是拥有组合式 API 的 Vue 状态管理库。
-
-
-
-### 规范标准
-
-目前该项目采用以下规范标准：
-
-- [vue 语法规范规则](https://vuejs.org/style-guide/rules-recommended.html)
-- [Standard  js语法规范规则](https://standardjs.com/)
-- [bem css样式命名规范](https://getbem.com/)
-
-
-
-### IDE插件
-
-采用vs code开发，需安装以下插件，方便项目开发，其作用编码、风格、自动填充、语法高亮等辅助功能。
-
-- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
-- [JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
-
-- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-
-webstorm、以及其他ide后续更新。
+- [Git](https://git-scm.com/) 是一个免费的开源分布式版本控制系统，旨在快速高效地处理从小型项目到大型项目的所有内容。
 
 
 
@@ -114,7 +101,7 @@ npm run build:prd:weapp
 npm run lint:eslint
 ```
 
-代码检查（仅限修改文件）
+代码检查（仅限检查已改动的文件）
 
 ```shell
 npm run lint:lint-staged
@@ -158,30 +145,144 @@ npm run deps
 
 
 
-### 代码调试
+### IDE插件
 
-在taro框架下开发vue 3.0项目时，已经支持vue devtools工具代码调试，但仍处于实验性阶段，可能存在一些的调试问题。
+采用vs code开发，需安装以下插件，方便项目开发，其作用编码、风格、自动填充、语法高亮等辅助功能。
 
-下载依赖包
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 
-```shell
-yarn add --dev @tarojs/plugin-vue-devtools
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+- [JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
+
+- [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+- [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+webstorm、以及其他ide后续更新。
+
+
+
+### 规范标准
+
+目前该项目采用以下规范标准：
+
+- [vue 语法规范规则](https://vuejs.org/style-guide/rules-recommended.html)
+- [Standard  js语法规范规则](https://standardjs.com/)
+- [bem css样式命名规范](https://getbem.com/)
+
+
+
+### 风格规范
+
+- **页面**
+
+  页面必须包含（**index.config.ts**、**index.scss**、**index.vue**）文件。针对仅在页面中使用的hook、component需要单独创建文件夹（**hooks/***，**components/***）
+
+  考虑业务会比较大，组件文件中的代码能会过于臃肿，所以**样式 scss 文件和组件文件需要单独创建**。
+
+  页面结构：以个人用户为例
+
+  - User
+    - index.config.ts
+    - index.scss
+    - index.vue
+    - hooks/*
+    - components/*
+
+
+
+- **组件**
+
+  组件**命名必须统一大驼峰命名**风格
+
+  - Title.vue
+  - Menu.vue
+  - MenuItem.vue
+
+
+
+​		组件必须采用**`<script setup>`**编码方式 
+
+
+
+​		**尽量在顶部使用hook**，并且确保不会影响**hook定义变量顺序关系**
+
+```vue
+// index.vue （index组件）
+
+<script setup lang="ts">
+  import { useVisible, useToggle, useRequest, useLoadRefresh } from '@hooks/index';
+  const { visible, showVisible } = useVisible();
+  const { state, on, off } = useToggle();
+    
+  ...
+</script>
+
+...
 ```
 
-配置taro插件
+
+
+- **服务接口**
+
+  接口方法变量前缀命名说明
+
+  - **Get**：查询、获取
+
+  - **Add**：新增
+
+  - **Update**：修改、状态更改
+
+  - **Del**：删除
+
+  - **Export**：导出
+
+  - **Download**：下载
+
+    
+
+- **模块导入**
+
+  **引入模块中，需要引入具体的index索引文件**，因为在TS中对别名处理后的路径不能够很好地支持，索引在引入模块需要引用到具体的index索引文件。
+
+```vue
+// index.vue （index组件）
+
+<script setup lang="ts">
+  import { GetProfile } from '@services/index';    // 正确
+  import { useVisible } from '@hooks';             // 错误
+</script>
+
+...
+```
+
+
+
+- **全局配置**
+
+  针对业务全局配置统一必须在**`wx.config.js`**文件编写。
 
 ```javascript
-// config/dev.js
+// app.config.js （全局配置）
 
-config = {
-  plugins: [
-    '@tarojs/plugin-vue-devtools'
-  ],
-  // ...
-}
+import pkage from '../package.json';
+
+export default {
+  // 版本
+  version: pkage.version,
+
+  // 应用标题
+  title: 'template',
+
+  // host请求地址，可在package.json配置
+  host: REQUEST_URL,
+
+  // 请求时长（ms）
+  timeout: 2000,
+};
+
 ```
-重跑项目即可。
-
 
 
 
@@ -216,6 +317,31 @@ console.log(REQUEST_URL);
 
 如有不清楚，也可访问官方提供的针对[环境变量](https://taro-docs.jd.com/docs/config-detail#env)的说明。
 
+
+
+### 代码调试
+
+在taro框架下开发vue 3.0项目时，已经支持vue devtools工具代码调试，但仍处于实验性阶段，可能存在一些的调试问题。
+
+下载依赖包
+
+```shell
+yarn add --dev @tarojs/plugin-vue-devtools
+```
+
+配置taro插件
+
+```javascript
+// config/dev.js
+
+config = {
+  plugins: [
+    '@tarojs/plugin-vue-devtools'
+  ],
+  // ...
+}
+```
+重跑项目即可。
 
 
 
@@ -304,7 +430,10 @@ module.exports = {
 ...
 ```
 
-**注意在引入模块中，需要引入具体的文件，如`@hooks`，需改为`@hooks/index`，这样是为了语法规范，其次前者在ts别名中不能更好地识别。**在[规范标准]()中也会相关说明。
+**注意在引入模块中，需要引入具体的文件，如`@hooks`，需改为`@hooks/index`，这样是为了语法规范，其次前者在ts别名中不能更好地识别。**在[风格规范](#风格规范)中也会相关说明。
 
 如有不清楚，也可访问官方提供的针对[路径别名](https://taro-docs.jd.com/docs/config-detail#alias)的说明。
 
+
+
+### 开发人员

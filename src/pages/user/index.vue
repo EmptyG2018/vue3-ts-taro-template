@@ -37,12 +37,18 @@
     欢迎使用NutUI 3.0
   </nut-button>
 
+  <view>{{ state ? '开' : '关' }}</view>
+  <button @click="off">关</button>
+  <button @click="on">开</button>
+
   <view :style="{ height: '1000px' }"> 1000 </view>
 </template>
 
 <script setup lang="ts">
-import { useLoadRefresh, useRequest, useLoadDrop } from '@/hooks';
+import { useToggle, useLoadRefresh, useRequest, useLoadDrop } from '@/hooks';
 import { GetDemo } from '@/services';
+
+const { state, off, on } = useToggle(false);
 
 const {
   run: service1,

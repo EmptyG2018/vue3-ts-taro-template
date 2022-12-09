@@ -1,23 +1,23 @@
 import { ref } from 'vue';
 
-const useVisible = (status = false) => {
+const useVisible = (defaultValue = false) => {
   // 当前显示
-  const visible = ref<boolean>(status);
+  const visible = ref<boolean>(defaultValue);
 
-  // 设置隐藏
-  const showVisible = (): void => {
+  // 设置显示
+  const show = (): void => {
     visible.value = true;
   };
 
-  // 设置显示
-  const hideVisible = (): void => {
+  // 设置隐藏
+  const hide = (): void => {
     visible.value = false;
   };
 
   return {
     visible,
-    showVisible,
-    hideVisible,
+    show,
+    hide,
   };
 };
 

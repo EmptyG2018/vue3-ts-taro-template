@@ -1,8 +1,3 @@
-export type Dict<T = string, S = number | string> = {
-  label: T;
-  value: S;
-};
-
 export const Locals: Dict[] = [
   {
     label: '英文',
