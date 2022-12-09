@@ -43,6 +43,7 @@
     "@tarojs/taro": "3.5.8",
     "@tarojs/taro-h5": "3.5.8",
     "pinia": "^2.0.27",
+    "treer": "^1.0.4",
     "vue": "^3.0.0"
   },
   "devDependencies": {
