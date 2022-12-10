@@ -8,7 +8,7 @@ import type { AsyncService, AsyncOption } from './useAsync';
 
 const useLoadRefresh = <T = any>(
   service: AsyncService<T>,
-  option: AsyncOption = {}
+  option: AsyncOption<T> = {}
 ) => {
   const { onFinally, ...rest } = option;
 

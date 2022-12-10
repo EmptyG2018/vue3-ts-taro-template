@@ -1,17 +1,17 @@
 import { ref } from 'vue';
 import useLoading from './useLoading';
 
-type Records = Record<string, any>;
+export type Params = Record<string, any>;
 
-export type AsyncService<T = any> = (params?: Records) => Promise<T>;
+export type AsyncService<T = any> = (params?: Params) => Promise<T>;
 
 export type AsyncOption<T = any> = {
   immediate?: boolean;
-  onBefore?: (params?: Records) => void;
-  onSuccess?: (result: T, params?: Records) => void;
+  onBefore?: (params?: Params) => void;
+  onSuccess?: (result: T, params?: Params) => void;
   onError?: (error: any) => void;
   onFinally?: (
-    params: Records | undefined,
+    params: Params | undefined,
     result: T | undefined,
     error: any
   ) => void;
@@ -19,7 +19,7 @@ export type AsyncOption<T = any> = {
 
 const useAsync = <T = any>(
   service: AsyncService<T>,
-  option: AsyncOption<T> = {}
+  options: AsyncOption<T> = {}
 ) => {
   const { loading, showLoading, hideLoading } = useLoading(false);
 
@@ -27,9 +27,9 @@ const useAsync = <T = any>(
 
   const error = ref<any>();
 
-  const { immediate, onBefore, onSuccess, onError, onFinally } = option;
+  const { immediate, onBefore, onSuccess, onError, onFinally } = options;
 
-  const run = async (params?: Records): Promise<T> => {
+  const run = async (params?: Params): Promise<T> => {
     resetStateData();
 
     typeof onBefore === 'function' && onBefore();

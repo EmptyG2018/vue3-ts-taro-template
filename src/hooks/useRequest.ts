@@ -9,9 +9,9 @@ type RequestOption<T = any> = AsyncOption<T> & {
 
 const useRequest = <T = any>(
   service: AsyncService<T>,
-  option: RequestOption<T> = {}
+  options: RequestOption<T> = {}
 ) => {
-  const { defaultParams, ...rest } = option;
+  const { defaultParams, ...rest } = options;
 
   const {
     data,

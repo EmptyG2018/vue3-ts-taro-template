@@ -5,9 +5,9 @@ export type PagingOption = {
   size: number;
 };
 
-const usePaging = (option: PagingOption = { current: 1, size: 16 }) => {
+const usePaging = (options: PagingOption = { current: 1, size: 16 }) => {
   // 当前分页
-  const paging: PagingOption = reactive(option);
+  const paging: PagingOption = reactive(options);
 
   // 分页跳转
   const jumpPage = (

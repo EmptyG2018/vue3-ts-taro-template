@@ -1,8 +1,8 @@
 import { ref } from 'vue';
 
-const useLoading = (status = false) => {
+const useLoading = (defaultValue = false) => {
   // 当前显示
-  const loading = ref<boolean>(status);
+  const loading = ref<boolean>(defaultValue);
 
   // 隐藏加载状态
   const showLoading = (): void => {
