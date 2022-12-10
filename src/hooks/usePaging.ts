@@ -1,32 +1,40 @@
 import { reactive } from 'vue';
 
 export type PagingOption = {
-  current: number;
-  size: number;
+  current?: number;
+  size?: number;
+  onPageChange?: () => void;
+  onSizeChange?: () => void;
+  onChange?: () => void;
 };
 
-const usePaging = (options: PagingOption = { current: 1, size: 16 }) => {
+const usePaging = (options: PagingOption = {}) => {
+  const { current, size } = options;
+
   // 当前分页
-  const paging: PagingOption = reactive(options);
+  const paging: PagingOption = reactive({
+    current: current || 1,
+    size: size || 16,
+  });
 
   // 分页跳转
   const jumpPage = (
     current: number,
-    fn?: (paging: PagingOption) => void
+    callback?: (paging: PagingOption) => void
   ): void => {
     paging.current = current;
 
-    if (typeof fn === 'function') fn(paging);
+    typeof callback === 'function' && callback(paging);
   };
 
   // 分页跳转
   const jumpSize = (
     size: number,
-    fn?: (paging: PagingOption) => void
+    callback?: (paging: PagingOption) => void
   ): void => {
     paging.size = size;
 
-    if (typeof fn === 'function') fn(paging);
+    typeof callback === 'function' && callback(paging);
   };
 
   return { paging, jumpPage, jumpSize };

@@ -405,13 +405,29 @@ type RequestOption<T = any> = AsyncOption<T> & {
 </template>
 
 <script setup lang="ts">
-import { useLoadRefresh } from '@hooks/index';
+import { useRequest, useLoadRefresh } from '@hooks/index';
 import { GetUsers, GetProfile } from '@services/index';
 
+const {
+  data: users,
+  loading: userLoading,
+  run: userAsync
+} = useRequest<API.UserItem[]>(GetUsers, {
+  immediate: false
+});
+
+const {
+  data: profile,
+  loading: profileLoading,
+  run: profileAsync
+} = useRequest<API.UserProfile>(GetProfile, {
+  immediate: false
+});
+    
 const { data, loading, run } = useLoadRefresh(
   async () => {
-    await GetUsers();
-    await GetProfile();
+    await userAsync();
+    await profileAsync();
   },
   { immediate: true }
 });

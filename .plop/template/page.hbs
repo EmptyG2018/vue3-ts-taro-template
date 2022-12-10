@@ -1,22 +1,49 @@
 <template>
-  <view class="main">{{title}}</view>
+  <view class="main">
+    <view v-if="loading">loading...</view>
+
+    <view v-if="data">
+      <view>user name: {{startTag}} profile.username{{endTag}}</view>
+      <view>user age: {{startTag}} profile.age {{endTag}}</view>
+      <view>user sex: {{startTag}} profile.sex {{endTag}}</view>
+      <view v-for="item in users">{{startTag}} item.nickname {{endTag}}</view>
+    </view>
+
+    <button @click="run">刷新</button>
+    <button @click="run({ pullDownRefresh: true })">刷新(下拉刷新)</button>
+    {{!-- 需要开启 下拉刷新 功能 --}}
+  </view>
 </template>
 
 <script setup lang="ts">
-import { useLoad } from '@tarojs/taro';
-import { ref, reactive } from 'vue';
+import { useRequest, useLoadRefresh } from '@hooks/index';
+import { GetProfile, GetUsers } from '@/services/index';
 
-type ValueProps = {
-  title: string;
-};
-
-const label = ref<string>('this is ');
-
-const value = reactive<ValueProps>({ title: '{{title}}' });
-
-useLoad(() => {
-  console.log(`loaded：${label.value}${value.title}`);
+const {
+  data: users,
+  loading: userLoading,
+  run: userAsync
+} = useRequest<API.UserItem[]>(GetUsers, {
+  immediate: false
 });
+
+const {
+  data: profile,
+  loading: profileLoading,
+  run: profileAsync
+} = useRequest<API.UserProfile>(GetProfile, {
+  immediate: false
+});
+
+const { data, loading, run } = useLoadRefresh(
+  async () => {
+    await userAsync();
+    await profileAsync();
+  },
+  { immediate: true }
+);
+
+
 </script>
 
 <style lang="scss">

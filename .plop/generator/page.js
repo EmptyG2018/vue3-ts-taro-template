@@ -58,6 +58,10 @@ module.exports = {
         type: 'add',
         path: 'src/pages/{{lowerCase name}}/index.vue',
         templateFile: '.plop/template/page.hbs',
+        data: {
+          startTag: '{{',
+          endTag: '}}',
+        },
       },
       {
         type: 'add',
