@@ -4,7 +4,7 @@
 
   <template v-if="loading1">
     loading:
-    <view :style="{ marginTop: '10px' }">{{ loading }}</view>
+    <view :style="{ marginTop: '10px' }">{{ loading1 }}</view>
   </template>
   <template v-if="error1">
     <view>error：{{ error1 }}</view>
@@ -16,7 +16,7 @@
 
   <template v-if="loading2">
     loading:
-    <view :style="{ marginTop: '10px' }">{{ loading }}</view>
+    <view :style="{ marginTop: '10px' }">{{ loading2 }}</view>
   </template>
   <template v-if="error2">
     <view>error：{{ error2 }}</view>
@@ -37,6 +37,10 @@
     欢迎使用NutUI 3.0
   </nut-button>
 
+  <nut-button type="primary" :loading="loading" @click="debounce">
+    防抖
+  </nut-button>
+
   <view>{{ state ? '开' : '关' }}</view>
   <button @click="off">关</button>
   <button @click="on">开</button>
@@ -45,10 +49,22 @@
 </template>
 
 <script setup lang="ts">
-import { useToggle, useLoadRefresh, useRequest, useLoadDrop } from '@/hooks';
+import {
+  useToggle,
+  useRequest,
+  useLoadRefresh,
+  useLoadDrop,
+  useDebounce,
+} from '@/hooks';
 import { GetDemo } from '@/services';
 
 const { state, off, on } = useToggle(false);
+// const debouncedFn = useDebounce(
+//   () => {
+//     console.log('触发啦');
+//   },
+//   { wait: 1000, maxWait: 5000 }
+// );
 
 const {
   run: service1,
@@ -70,7 +86,22 @@ const {
   defaultParams: {},
 });
 
-useLoadDrop();
+const {
+  list,
+  paging,
+  run: service3,
+  data: data3,
+  loading: loading3,
+  error: error3,
+} = useLoadDrop(service2, {
+  immediate: true,
+  pagingOptions: {
+    currentField: 'current',
+    sizeField: 'size',
+  },
+  defaultParams: {},
+  defaultPaging: {},
+});
 
 const { run, loading } = useLoadRefresh(
   async () => {
@@ -102,6 +133,10 @@ const send2 = async () => {
   } catch (err) {
     console.log('sync runError', err);
   }
+};
+
+const debounce = () => {
+  console.log('wwww');
 };
 </script>
 

@@ -8,9 +8,7 @@ module.exports = {
    * 官网地址：https://taro-docs.jd.com/docs/config-detail#env
    */
   defineConstants: {
-    REQUEST_URL: JSON.stringify('【生成环境】http://111.111.11.111:8080/'),
+    REQUEST_URL: JSON.stringify('http://192.168.31.152:9999'),
     PRODUCTION: JSON.stringify(true),
   },
-  mini: {},
-  h5: {},
 };

@@ -1,5 +1,5 @@
-const useDebounce = () => {
-  console.log('this is useDebounce!');
+const useThrottle = () => {
+  console.log('this is useThrottle');
 };
 
-export default useDebounce;
+export default useThrottle;

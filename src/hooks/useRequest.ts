@@ -1,10 +1,9 @@
+import { ref } from 'vue';
 import useAsync from './useAsync';
-import type { AsyncService, AsyncOption } from './useAsync';
+import type { Params, AsyncService, AsyncOption } from './useAsync';
 
-type Records = Record<string, any>;
-
-type RequestOption<T = any> = AsyncOption<T> & {
-  defaultParams?: Records;
+export type RequestOption<T = any> = AsyncOption<T> & {
+  defaultParams?: Params;
 };
 
 const useRequest = <T = any>(
@@ -13,27 +12,33 @@ const useRequest = <T = any>(
 ) => {
   const { defaultParams, ...rest } = options;
 
+  const params = ref<Params | undefined>(defaultParams);
+
   const {
     data,
     loading,
     error,
     run: runAsync,
-  } = useAsync(service, {
+  } = useAsync<T>(service, {
     immediate: false,
     ...rest,
   });
 
-  const run = (syncParams?: Records) => {
-    const params = syncParams || defaultParams;
+  const run = (syncParams?: Params) => {
+    params.value = syncParams;
 
-    return runAsync(params);
+    return runAsync(syncParams);
   };
+
+  const refresh = () => runAsync(params.value);
 
   return {
     data,
+    params,
     loading,
     error,
     run,
+    refresh,
   };
 };
 

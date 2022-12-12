@@ -13,17 +13,11 @@ import { delay } from '@utils/index';
 
 export const GetProfile = (params: Params.Login) =>
   request<API.GetDemo>('/user/getToken', {
-    method: 'get',
+    method: 'GET',
     data: params,
   });
 
-export const GetDemo = async () => {
-  await delay(1000);
-  // throw new Error('error code: 500');
-  return [
-    {
-      id: 1,
-      title: 'one',
-    },
-  ];
-};
+export const GetDemo = async () =>
+  request('/admin/account/info', {
+    method: 'GET',
+  });

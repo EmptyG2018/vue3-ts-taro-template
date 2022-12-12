@@ -1,18 +1,25 @@
 import { ref } from 'vue';
 import { useReachBottom } from '@tarojs/taro';
-import useRequest from './useRequest';
+import type { AsyncService } from './useAsync';
+import useLoadPage from './useLoadPage';
+import { LoadPageOption } from './useLoadPage';
 
-const useLoadDrop = () => {
-  const list = ref([]);
-  const data = ref([]);
+const useLoadDrop = <T = any>(
+  service: AsyncService,
+  options: LoadPageOption<T> = {}
+) => {
+  const { next, loading, ...rest } = useLoadPage<T>(service, options);
 
-  useReachBottom(() => {
-    console.log('reach bottom');
-  });
+  const run = async () => {
+    if (!loading) await next();
+  };
+
+  useReachBottom(() => run());
 
   return {
-    list,
-    data,
+    ...rest,
+    run,
+    loading,
   };
 };
 
