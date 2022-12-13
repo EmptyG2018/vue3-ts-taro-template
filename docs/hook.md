@@ -55,12 +55,12 @@ const { state, on, off, reverse } = useToggle(defaultValue?: boolean);
 
 **Result**
 
-| 参数    | 说明     | 类型         |
-| :------ | -------- | ------------ |
-| state   | 状态值   | Ref<boolean> |
-| on      | 开启     | () => void   |
-| off     | 关闭     | () => void   |
-| reverse | 相反切换 | () => void   |
+| 参数    | 说明     | 类型           |
+| :------ | -------- | -------------- |
+| state   | 状态值   | Ref\<boolean\> |
+| on      | 开启     | () => void     |
+| off     | 关闭     | () => void     |
+| reverse | 相反切换 | () => void     |
 
 
 
@@ -103,12 +103,12 @@ const { visible, show, hide, reverse } = useVisible(defaultValue?: boolean);
 
 **Result**
 
-| 参数    | 说明     | 类型         |
-| :------ | -------- | ------------ |
-| visible | 状态值   | Ref<boolean> |
-| show    | 显示     | () => void   |
-| hide    | 隐藏     | () => void   |
-| reverse | 相反切换 | () => void   |
+| 参数    | 说明     | 类型           |
+| :------ | -------- | -------------- |
+| visible | 状态值   | Ref\<boolean\> |
+| show    | 显示     | () => void     |
+| hide    | 隐藏     | () => void     |
+| reverse | 相反切换 | () => void     |
 
 
 
@@ -153,11 +153,11 @@ const { loading, showLoading, hideLoading } = useLoading(defaultValue?: boolean)
 
 **Result**
 
-| 参数        | 说明   | 类型         |
-| :---------- | ------ | ------------ |
-| loading     | 状态值 | Ref<boolean> |
-| showLoading | 加载   | () => void   |
-| hideLoading | 隐藏   | () => void   |
+| 参数        | 说明   | 类型           |
+| :---------- | ------ | -------------- |
+| loading     | 状态值 | Ref\<boolean\> |
+| showLoading | 加载   | () => void     |
+| hideLoading | 隐藏   | () => void     |
 
 
 
@@ -370,11 +370,11 @@ type RequestOption<T = any> = AsyncOption<T> & {
 
 **Result**
 
-| 参数    | 说明                                    | 类型                     |
-| :------ | --------------------------------------- | ------------------------ |
-| ...     | 同上 `useAsync` result 参数一致         |                          |
-| params  | 请求参数，可通过`defaultParams`默认设置 | Ref<Params \| undefined> |
-| refresh | 刷新请求，不会覆盖参数                  | () => void               |
+| 参数    | 说明                                    | 类型                       |
+| :------ | --------------------------------------- | -------------------------- |
+| ...     | 同上 `useAsync` result 参数一致         |                            |
+| params  | 请求参数，可通过`defaultParams`默认设置 | Ref\<Params \| undefined\> |
+| refresh | 刷新请求，不会覆盖参数                  | () => void                 |
 
 
 
@@ -382,19 +382,19 @@ type RequestOption<T = any> = AsyncOption<T> & {
 
 **Params**
 
-| 参数    | 说明                   | 类型                   | 默认 |
-| ------- | ---------------------- | ---------------------- | ---- |
-| service | 必选项，传入service    | AsyncService<T = any>  | -    |
-| options | 可选项，传入的配置选项 | RequestOption<T = any> | -    |
+| 参数    | 说明                   | 类型                     | 默认 |
+| ------- | ---------------------- | ------------------------ | ---- |
+| service | 必选项，传入service    | AsyncService\<T = any\>  | -    |
+| options | 可选项，传入的配置选项 | RequestOption\<T = any\> | -    |
 
 
 
 **Options**
 
-| 参数          | 说明                        | 类型                 | 默认 |
-| :------------ | --------------------------- | -------------------- | ---- |
-| ...           | 同上 `AsyncOption` 参数一致 | AsyncOption<T = any> | -    |
-| defaultParams | 可选项，传入默认的请求参数  | Params               | -    |
+| 参数          | 说明                        | 类型                   | 默认 |
+| :------------ | --------------------------- | ---------------------- | ---- |
+| ...           | 同上 `AsyncOption` 参数一致 | AsyncOption\<T = any\> | -    |
+| defaultParams | 可选项，传入默认的请求参数  | Params                 | -    |
 
 
 
@@ -479,7 +479,7 @@ type PageOption= { run?: boolean };
 | 参数   | 说明                                              | 类型                             |
 | :----- | ------------------------------------------------- | -------------------------------- |
 | ...    | 同上 `useRequest` result 参数一致                 |                                  |
-| paging | 分页参数                                          | Ref<Params \| undefined>         |
+| paging | 分页参数                                          | Ref\<Params \| undefined\>       |
 | next   | 下一页，传入`{ run: true }`分页请求，不传参仅分页 | (pageOpton?: PageOption) => void |
 | prev   | 上一页，传入`{ run: true }`分页请求，不传参仅分页 | (pageOpton?: PageOption) => void |
 
@@ -489,20 +489,20 @@ type PageOption= { run?: boolean };
 
 **Params**
 
-| 参数    | 说明                   | 类型                   | 默认 |
-| ------- | ---------------------- | ---------------------- | ---- |
-| service | 必选项，传入service    | AsyncService<T = any>  | -    |
-| options | 可选项，传入的配置选项 | RequestOption<T = any> | -    |
+| 参数    | 说明                   | 类型                     | 默认 |
+| ------- | ---------------------- | ------------------------ | ---- |
+| service | 必选项，传入service    | AsyncService\<T = any\>  | -    |
+| options | 可选项，传入的配置选项 | RequestOption\<T = any\> | -    |
 
 
 
 **Options**
 
-| 参数          | 说明                          | 类型                   | 默认 |
-| :------------ | ----------------------------- | ---------------------- | ---- |
-| ...           | 同上 `RequestOption` 参数一致 | RequestOption<T = any> | -    |
-| defaultPaging | 可选项，传入默认的分页参数    | Params                 | -    |
-| pagingOptions | 可选项，分页配置选项          | PagingOptions          | -    |
+| 参数          | 说明                          | 类型                     | 默认 |
+| :------------ | ----------------------------- | ------------------------ | ---- |
+| ...           | 同上 `RequestOption` 参数一致 | RequestOption\<T = any\> | -    |
+| defaultPaging | 可选项，传入默认的分页参数    | Params                   | -    |
+| pagingOptions | 可选项，分页配置选项          | PagingOptions            | -    |
 
 
 
@@ -559,7 +559,7 @@ const {
 } = useRequest<API.UserProfile>(GetProfile, {
   immediate: false
 });
-    
+
 const { data, loading, run } = useLoadRefresh(
   async () => {
     await userAsync();
@@ -582,10 +582,10 @@ const { data, loading, error, run } = useLoadRefresh<T = any>(service: AsyncServ
 
 **Result**
 
-| 参数 | 说明                                        | 类型                                    |
-| :--- | ------------------------------------------- | --------------------------------------- |
-| ...  | 同上 `useAsync` result 参数一致             |                                         |
-| run  | 手动触发 service 执行，参数会传递给 service | (*runOption*?: RunOption) => Promise<T> |
+| 参数 | 说明                                        | 类型                                      |
+| :--- | ------------------------------------------- | ----------------------------------------- |
+| ...  | 同上 `useAsync` result 参数一致             |                                           |
+| run  | 手动触发 service 执行，参数会传递给 service | (*runOption*?: RunOption) => Promise\<T\> |
 
 
 
