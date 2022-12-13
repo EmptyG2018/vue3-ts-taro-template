@@ -14,10 +14,16 @@ const useToggle = (defaultValue = false) => {
     state.value = false;
   };
 
+  // 相反切换
+  const reverse = (): void => {
+    state.value = !state.value;
+  };
+
   return {
     state,
     on,
     off,
+    reverse,
   };
 };
 

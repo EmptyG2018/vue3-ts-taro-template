@@ -7,6 +7,7 @@
 - [usePaging](#usePaging)
 - [useAsync](#useAsync)
 - [useRequest](#useRequest)
+- [useLoadPage](#useLoadPage)
 - [useLoadRefresh](#useLoadRefresh)
 - [useLoadDrop](#useLoadDrop)
 
@@ -25,11 +26,12 @@
   <view>状态值：{{ state ? '开' : '关' }}</view>
   <button @click='off'>关</button>
   <button @click='on'>开</button>
+  <button @click='reverse'>切换</button>
 </template>
 
 <script setup lang="ts">
 import { useToggle } from '@hooks/index';
-const { state, on, off } = useToggle(false);
+const { state, on, off, reverse } = useToggle(false);
 </script>
 ```
 
@@ -38,7 +40,7 @@ const { state, on, off } = useToggle(false);
 **API**
 
 ```typescript
-const { state, on, off } = useToggle(defaultValue?: boolean);
+const { state, on, off, reverse } = useToggle(defaultValue?: boolean);
 ```
 
 
@@ -53,11 +55,12 @@ const { state, on, off } = useToggle(defaultValue?: boolean);
 
 **Result**
 
-| 参数  | 说明   | 类型         |
-| :---- | ------ | ------------ |
-| state | 状态值 | Ref<boolean> |
-| on    | 开启   | () => void   |
-| off   | 关闭   | () => void   |
+| 参数    | 说明     | 类型         |
+| :------ | -------- | ------------ |
+| state   | 状态值   | Ref<boolean> |
+| on      | 开启     | () => void   |
+| off     | 关闭     | () => void   |
+| reverse | 相反切换 | () => void   |
 
 
 
@@ -76,7 +79,7 @@ const { state, on, off } = useToggle(defaultValue?: boolean);
 
 <script setup lang="ts">
 import { useVisible } from '@hooks/index';
-const { visible, show, hide } = useVisible(false);
+const { visible, show, hide, reverse } = useVisible(false);
 </script>
 ```
 
@@ -85,7 +88,7 @@ const { visible, show, hide } = useVisible(false);
 **API**
 
 ```typescript
-const { visible, show, hide } = useVisible(defaultValue?: boolean);
+const { visible, show, hide, reverse } = useVisible(defaultValue?: boolean);
 ```
 
 
@@ -100,11 +103,12 @@ const { visible, show, hide } = useVisible(defaultValue?: boolean);
 
 **Result**
 
-| 参数    | 说明   | 类型         |
-| :------ | ------ | ------------ |
-| visible | 状态值 | Ref<boolean> |
-| show    | 显示   | () => void   |
-| hide    | 隐藏   | () => void   |
+| 参数    | 说明     | 类型         |
+| :------ | -------- | ------------ |
+| visible | 状态值   | Ref<boolean> |
+| show    | 显示     | () => void   |
+| hide    | 隐藏     | () => void   |
+| reverse | 相反切换 | () => void   |
 
 
 
@@ -284,21 +288,21 @@ type AsyncOption<T = any> = {
 
 **Result**
 
-| 参数    | 说明                                        | 类型                              |
-| :------ | ------------------------------------------- | --------------------------------- |
-| data    | 请求成功返回的数据                          | Ref<T \| undefined>               |
-| loading | 加载状态                                    | Re<boolean>                       |
-| error   | 请求错误返回的数据                          | Ref<any>                          |
-| run     | 手动触发 service 执行，参数会传递给 service | (*params*?: Params) => Promise<T> |
+| 参数    | 说明                                        | 类型                                |
+| :------ | ------------------------------------------- | ----------------------------------- |
+| data    | 请求成功返回的数据                          | Ref\<T \| undefined\>               |
+| loading | 加载状态                                    | Re\<boolean\>                       |
+| error   | 请求错误返回的数据                          | Ref\<any\>                          |
+| run     | 手动触发 service 执行，参数会传递给 service | (*params*?: Params) => Promise\<T\> |
 
 
 
 **Params**
 
-| 参数    | 说明                   | 类型                  | 默认 |
-| ------- | ---------------------- | --------------------- | ---- |
-| service | 必选项，传入service    | AsyncService<T = any> | -    |
-| options | 可选项，传入的配置选项 | AsyncOption<T = any>  | -    |
+| 参数    | 说明                   | 类型                    | 默认 |
+| ------- | ---------------------- | ----------------------- | ---- |
+| service | 必选项，传入service    | AsyncService\<T = any\> | -    |
+| options | 可选项，传入的配置选项 | AsyncOption\<T = any\>  | -    |
 
 
 
@@ -349,7 +353,7 @@ const { data, loading, error } = useRequest<API.UserItem[]>(GetUsers, {
 **API**
 
 ```typescript
-const { data, loading, error, run } = useRequest<T = any>(service: AsyncService<T>, options: RequestOption<T>);
+const { data, params, loading, error, run, refresh } = useRequest<T = any>(service: AsyncService<T>, options: RequestOption<T>);
 ```
 
 
@@ -366,7 +370,13 @@ type RequestOption<T = any> = AsyncOption<T> & {
 
 **Result**
 
-返回的结果与**`useAsync`**一致。
+| 参数    | 说明                                    | 类型                     |
+| :------ | --------------------------------------- | ------------------------ |
+| ...     | 同上 `useAsync` result 参数一致         |                          |
+| params  | 请求参数，可通过`defaultParams`默认设置 | Ref<Params \| undefined> |
+| refresh | 刷新请求，不会覆盖参数                  | () => void               |
+
+
 
 
 
@@ -385,6 +395,132 @@ type RequestOption<T = any> = AsyncOption<T> & {
 | :------------ | --------------------------- | -------------------- | ---- |
 | ...           | 同上 `AsyncOption` 参数一致 | AsyncOption<T = any> | -    |
 | defaultParams | 可选项，传入默认的请求参数  | Params               | -    |
+
+
+
+### useLoadPage
+
+用于处理分页请求的Hook
+
+
+
+**代码演示**
+
+```vue
+<template>
+  <view v-if="loading">loading...</view>
+  <view v-if="data">
+    <view v-for="item in data">{{ item.title }}</view>
+  </view>
+  <view v-if="error">{{ error }}</view>
+  <button @click="prev">上一页</button>
+  <button @click="next">下一页</button>
+  <button @click="prev({ run: true })">上一页(请求)</button>
+  <button @click="next({ run: true })">下一页(请求)</button>
+</template>
+
+<script setup lang="ts">
+import { useLoadPage } from '@hooks/index';
+import { GetUsers } from '@services/index';
+const { data, loading, error, params, prev, next, paging } = useLoadPage<API.UserItem[]>(GetUsers, {
+  immediate: true;
+  defaultParams: {
+  	current: 1,
+    size: 24
+  },
+  defaultPaging: {
+    pageNum: 1,
+    size: 16,
+  },
+  pagingOption: {
+    currentField: 'pageNum',
+    sizeField: 'size',
+  }
+});
+</script>
+```
+
+
+
+**API**
+
+```typescript
+const { data, params, paging, loading, error, run, next, prev, refresh } = useLoadPage<T = any>(service: AsyncService<T>, options: LoadPageOption<T>);
+```
+
+
+
+**LoadPageOption**
+
+```typescript
+type LoadPageOption<T = any> = RequestOption<T> & {
+  defaultPaging?: Params;
+  pagingOptions?: {
+    currentField?: string;
+    sizeField?: string;
+  }
+};
+```
+
+
+
+**PageOption**
+
+```typescript
+type PageOption= { run?: boolean };
+```
+
+
+
+
+
+**Result**
+
+| 参数   | 说明                                              | 类型                             |
+| :----- | ------------------------------------------------- | -------------------------------- |
+| ...    | 同上 `useRequest` result 参数一致                 |                                  |
+| paging | 分页参数                                          | Ref<Params \| undefined>         |
+| next   | 下一页，传入`{ run: true }`分页请求，不传参仅分页 | (pageOpton?: PageOption) => void |
+| prev   | 上一页，传入`{ run: true }`分页请求，不传参仅分页 | (pageOpton?: PageOption) => void |
+
+
+
+
+
+**Params**
+
+| 参数    | 说明                   | 类型                   | 默认 |
+| ------- | ---------------------- | ---------------------- | ---- |
+| service | 必选项，传入service    | AsyncService<T = any>  | -    |
+| options | 可选项，传入的配置选项 | RequestOption<T = any> | -    |
+
+
+
+**Options**
+
+| 参数          | 说明                          | 类型                   | 默认 |
+| :------------ | ----------------------------- | ---------------------- | ---- |
+| ...           | 同上 `RequestOption` 参数一致 | RequestOption<T = any> | -    |
+| defaultPaging | 可选项，传入默认的分页参数    | Params                 | -    |
+| pagingOptions | 可选项，分页配置选项          | PagingOptions          | -    |
+
+
+
+**Paging**
+
+| 参数    | 说明                                                 | 类型 | 默认 |
+| :------ | ---------------------------------------------------- | ---- | ---- |
+| current | 可选项，分页当前索引，`currentField`可配置自定义字段 | any  | 1    |
+| size    | 可选项，分页大小，`sizeField`可配置自定义字段        | any  | 16   |
+
+
+
+**pagingOptions**
+
+| 参数         | 说明                     | 类型   | 默认    |
+| :----------- | ------------------------ | ------ | ------- |
+| currentField | 可选项，分页当前索引字段 | string | current |
+| sizeField    | 可选项，分页大小字段     | string | size    |
 
 
 

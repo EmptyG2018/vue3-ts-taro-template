@@ -14,10 +14,16 @@ const useVisible = (defaultValue = false) => {
     visible.value = false;
   };
 
+  // 相反设置
+  const reverse = (): void => {
+    visible.value = !visible.value;
+  };
+
   return {
     visible,
     show,
     hide,
+    reverse,
   };
 };
 

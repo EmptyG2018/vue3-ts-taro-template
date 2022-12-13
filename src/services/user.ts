@@ -11,13 +11,22 @@ import { delay } from '@utils/index';
  * Download：下载
  */
 
-export const GetProfile = (params: Params.Login) =>
+export const GetToken = (params: Params.Login) =>
   request<API.GetDemo>('/user/getToken', {
     method: 'GET',
     data: params,
   });
 
-export const GetDemo = async () =>
+export const GetProfile = () =>
   request('/admin/account/info', {
     method: 'GET',
   });
+
+export const GetDemo = async () => {
+  await delay(800);
+  return {
+    key1: 'key',
+    key2: 2,
+    key3: true,
+  };
+};

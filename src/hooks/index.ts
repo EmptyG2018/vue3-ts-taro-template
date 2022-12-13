@@ -4,6 +4,7 @@ export { default as useLoading } from './useLoading';
 export { default as usePaging } from './usePaging';
 export { default as useDebounce } from './useDebounce';
 export { default as useThrottle } from './useThrottle';
+export { default as useAsync } from './useAsync';
 export { default as useRequest } from './useRequest';
 export { default as useLoadPage } from './useLoadPage';
 export { default as useLoadRefresh } from './useLoadRefresh';

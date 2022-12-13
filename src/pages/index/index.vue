@@ -1,5 +1,5 @@
 <template>
-  <view class="index">
+  <view class="main">
     <Title :msg="1" />
     <view class="line">
       {{ state.host }}
@@ -8,16 +8,30 @@
       {{ state.version }}
     </view>
     <view class="line">
-      <button type="primary" @click="counterStore.increment">+</button>
+      <nut-button type="primary"> 欢迎使用NutUI 3.0 </nut-button>
+    </view>
+
+    <view class="line">
+      <nut-button type="primary" @click="counterStore.increment">+</nut-button>
       <text>{{ counterStore.count }}</text>
-      <button type="primary" @click="counterStore.reduce">-</button>
+      <nut-button type="primary" @click="counterStore.reduce"> - </nut-button>
     </view>
-    <view>
-      <button @click="navigateTo({ url: '/pages/home/index' })">跳转</button>
+
+    <view class="line">
+      <nut-button
+        type="primary"
+        @click="navigateTo({ url: '/pages/store/index' })"
+      >
+        跳转全局状态管理
+      </nut-button>
     </view>
-    <view class="btn">
-      <nut-button type="primary" @click="handleClick('text', state.msg2, true)">
-        欢迎使用NutUI 3.0
+
+    <view class="line">
+      <nut-button
+        type="primary"
+        @click="navigateTo({ url: '/pages/hook/index' })"
+      >
+        hook常见使用场景
       </nut-button>
     </view>
 
@@ -38,7 +52,7 @@ import { useCounterStore } from '@stores/counter';
 import { navigateTo, useDidShow, useLoad } from '@tarojs/taro';
 import wxConfig from '@/wx.config';
 
-const { visible: welcome, showVisible: showWelcome } = useVisible(false);
+const { visible: welcome } = useVisible(false);
 const counterStore = useCounterStore();
 
 type StateProps = {
@@ -66,13 +80,6 @@ useLoad(() => {
 useDidShow(() => {
   console.log('did showed');
 });
-
-const handleClick = (type, msg, cover = false) => {
-  showWelcome();
-  state.msg2 = msg;
-  state.type = type;
-  state.cover = cover;
-};
 </script>
 
 <style lang="scss">

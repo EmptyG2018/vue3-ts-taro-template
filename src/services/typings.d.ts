@@ -37,6 +37,26 @@ declare namespace Params {
 
 // Response 响应数据类型定义
 declare namespace API {
+  type GetUploadFile = ResponseData<{
+    createDeptId: string;
+    createId: string;
+    createBy: string;
+    createTime: string;
+    updateId: string;
+    updateBy: string;
+    updateTime: string;
+    filesId: string;
+    fileName: string;
+    bucketName: string;
+    area: string;
+    filePath: string;
+    original: string;
+    type: string;
+    sourceType: number;
+    fileSize: string;
+    delFlag: any;
+  }>;
+
   // 成功且不做任何返回 ts类型定义
   type UpdateDemo = ResponseData<null>;
 

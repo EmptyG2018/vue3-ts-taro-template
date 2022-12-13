@@ -5,11 +5,15 @@ import type { RequestOption } from './useRequest';
 
 export type LoadPageOption<T = any> = RequestOption<T> & {
   defaultPaging?: Params;
-  pagingOptions?: {
-    currentField?: string;
-    sizeField?: string;
-  };
+  pagingOptions?: PagingOptions;
 };
+
+export type PagingOptions = {
+  currentField?: string;
+  sizeField?: string;
+};
+
+export type PageOption = { run?: boolean };
 
 const useLoadPage = <T = any>(
   service: AsyncService<T>,
@@ -37,20 +41,42 @@ const useLoadPage = <T = any>(
     ...rest,
   });
 
-  const jumpPage = (step: number) => {
+  const syncPageStep = (step: number) => {
+    if (paging.value) {
+      paging.value[currentField] = paging.value[currentField] + step;
+      params.value = {
+        ...params.value,
+        ...paging.value,
+      };
+    }
+  };
+
+  const jump = (step: number) => {
+    if (paging.value) {
+      paging.value = {
+        ...paging.value,
+        [currentField]: paging.value[currentField] + step,
+      };
+    }
     return paging.value
       ? run({
           ...params.value,
-          [currentField]: paging.value[currentField] + step,
+          ...paging.value,
         })
       : run(params.value);
   };
 
+  const createJump = (step: number, pageOpton: PageOption = {}) => {
+    const { run } = pageOpton;
+    run ? jump(step) : syncPageStep(step);
+  };
+
   return {
     run,
-    next: () => jumpPage(1),
-    prev: () => jumpPage(-1),
+    next: (pageOpton?: PageOption) => createJump(1, pageOpton),
+    prev: (pageOpton?: PageOption) => createJump(-1, pageOpton),
     params,
+    paging,
     ...result,
   };
 };

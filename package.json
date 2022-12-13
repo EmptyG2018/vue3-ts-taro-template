@@ -26,7 +26,7 @@
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.7.7",
-    "@nutui/nutui-taro": "^3.1.8",
+    "@nutui/nutui-taro": "^3.3.0",
     "@tarojs/components": "3.5.8",
     "@tarojs/helper": "3.5.8",
     "@tarojs/plugin-framework-vue3": "3.5.8",
