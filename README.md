@@ -6,11 +6,11 @@
 
 ### 快捷入口
 
-[Vue 3.0](https://cn.vuejs.org/guide/introduction.html)
-[Taro内置组件库](https://taro-docs.jd.com/docs/components-desc)
-[Nut-UI组件库](https://nutui.jd.com/#/zh-CN/component/button)
-[常见GIt命令大全](./docs/git.md)
-[常见Hook语法](./docs/hook.md)
+- [Vue 3.0](https://cn.vuejs.org/guide/introduction.html)
+- [Taro内置组件库](https://taro-docs.jd.com/docs/components-desc)
+- [Nut-UI组件库](https://nutui.jd.com/#/zh-CN/component/button)
+- [常见GIt命令大全](./docs/git.md)
+- [常见Hook语法](./docs/hook.md)
 
 
 
