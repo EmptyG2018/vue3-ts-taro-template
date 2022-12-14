@@ -12,12 +12,7 @@ const useLoadRefresh = <T = any>(
 ) => {
   const { onFinally, ...rest } = option;
 
-  const {
-    data,
-    loading,
-    error,
-    run: runAsync,
-  } = useAsync<T>(service, {
+  const { run: runAsync, ...result } = useAsync<T>(service, {
     ...rest,
     onFinally(params, result, err) {
       stopPullDownRefresh();
@@ -34,10 +29,8 @@ const useLoadRefresh = <T = any>(
   };
 
   return {
-    data,
-    loading,
-    error,
     run,
+    ...result,
   };
 };
 

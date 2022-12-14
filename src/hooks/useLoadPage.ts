@@ -43,7 +43,7 @@ const useLoadPage = <T = any>(
 
   const syncPageStep = (step: number) => {
     if (paging.value) {
-      paging.value[currentField] = paging.value[currentField] + step;
+      paging.value[currentField] += step;
       params.value = {
         ...params.value,
         ...paging.value,
