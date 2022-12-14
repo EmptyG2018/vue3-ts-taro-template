@@ -11,7 +11,7 @@
           v-for="item in nav.list"
           size="small"
           :title="item.title"
-          :to="item.to"
+          @click="navigatorItem(item.to)"
         ></nut-cell>
       </nut-collapse-item>
     </nut-collapse>
@@ -20,6 +20,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { navigateTo } from '@tarojs/taro';
 
 const activeName = ref([]);
 
@@ -104,7 +105,7 @@ const navs = ref([
     list: [
       {
         title: '简单案例',
-        to: '/pages/hookuserefresh1/index',
+        to: '/pages/hookuseloadrefresh1/index',
       },
     ],
   },
@@ -129,6 +130,10 @@ const navs = ref([
     ],
   },
 ]);
+
+const navigatorItem = (to: string) => {
+  navigateTo({ url: to });
+};
 </script>
 
 <style lang="scss">

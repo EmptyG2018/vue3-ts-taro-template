@@ -66,15 +66,15 @@ const useLoadPage = <T = any>(
       : run(params.value);
   };
 
-  const createJump = (step: number, pageOpton: PageOption = {}) => {
-    const { run } = pageOpton;
+  const createJump = (step: number, pageOption: PageOption = {}) => {
+    const { run } = pageOption;
     run ? jump(step) : syncPageStep(step);
   };
 
   return {
     run,
-    next: (pageOpton?: PageOption) => createJump(1, pageOpton),
-    prev: (pageOpton?: PageOption) => createJump(-1, pageOpton),
+    next: (pageOption?: PageOption) => createJump(1, pageOption),
+    prev: (pageOption?: PageOption) => createJump(-1, pageOption),
     params,
     paging,
     ...result,
