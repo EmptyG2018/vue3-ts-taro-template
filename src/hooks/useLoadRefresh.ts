@@ -14,6 +14,7 @@ const useLoadRefresh = <T = any>(
 
   const { run: runAsync, ...result } = useAsync<T>(service, {
     ...rest,
+    cache: false,
     onFinally(params, result, err) {
       stopPullDownRefresh();
       onFinally && onFinally(params, result, err);

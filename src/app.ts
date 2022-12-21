@@ -1,6 +1,12 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import {
+  Swipe,
+  Row,
+  Col,
+  Checkbox,
+  Tag,
+  Price,
   Button,
   Toast,
   InputNumber,
@@ -27,6 +33,12 @@ const App = createApp({
 });
 
 App.use(createPinia())
+  .use(Swipe)
+  .use(Row)
+  .use(Col)
+  .use(Checkbox)
+  .use(Tag)
+  .use(Price)
   .use(Button)
   .use(Toast)
   .use(InputNumber)

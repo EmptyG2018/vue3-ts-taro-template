@@ -10,7 +10,7 @@ declare module '*.less';
 declare module '*.scss';
 declare module '*.sass';
 declare module '*.styl';
-      
+
 declare namespace NodeJS {
   interface ProcessEnv {
     TARO_ENV:
@@ -28,4 +28,11 @@ declare namespace NodeJS {
 
 declare module '@tarojs/components' {
   export * from '@tarojs/components/types/index.vue3';
+}
+
+declare module '*.vue' {
+  import type { DefineComponent } from 'vue';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }

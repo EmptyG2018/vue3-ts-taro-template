@@ -222,6 +222,7 @@ const { data, loading, error, run } = useAsync(
   },
   {
     immediate: true,
+    cache: false,
     onBefore(params) {
       console.log('params', params);
     },
@@ -273,6 +274,7 @@ type AsyncService<T = any> = (params?: Params) => Promise<T>;
 ```typescript
 type AsyncOption<T = any> = {
   immediate?: boolean;
+  cache?: boolean;
   onBefore?: (params?: Params) => void;
   onSuccess?: (result: T, params?: Params) => void;
   onError?: (error: any) => void;
@@ -311,6 +313,7 @@ type AsyncOption<T = any> = {
 | 参数      | 说明                       | 类型                                                         | 默认  |
 | --------- | -------------------------- | ------------------------------------------------------------ | ----- |
 | immediate | 可选项，传入默认的立即执行 | boolean                                                      | false |
+| cache     | 可选项，是否缓存响应数据   | boolean                                                      | true  |
 | onBefore  | 可选项，传入请求前的操作   | (params?: Params) => void                                    | -     |
 | onSuccess | 可选项，传入请求成功的操作 | (onSuccess: T, params?: Params) => void                      | -     |
 | onError   | 可选项，传入请求错误的操作 | (error: any) => void                                         | -     |
@@ -340,6 +343,7 @@ import { useRequest } from '@hooks/index';
 import { GetUsers } from '@services/index';
 const { data, loading, error } = useRequest<API.UserItem[]>(GetUsers, {
   immediate: true;
+  cache: false,
   defaultParams: {
   	current: 1,
     size: 24

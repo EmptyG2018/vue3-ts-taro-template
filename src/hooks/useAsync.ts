@@ -7,6 +7,7 @@ export type AsyncService<T = any> = (params?: Params) => Promise<T>;
 
 export type AsyncOption<T = any> = {
   immediate?: boolean;
+  cache?: boolean;
   onBefore?: (params?: Params) => void;
   onSuccess?: (result: T, params?: Params) => void;
   onError?: (error: any) => void;
@@ -27,10 +28,12 @@ const useAsync = <T = any>(
 
   const error = ref<any>();
 
-  const { immediate, onBefore, onSuccess, onError, onFinally } = options;
+  const { immediate, cache, onBefore, onSuccess, onError, onFinally } = options;
+
+  const cacheFlag = cache === undefined || !!cache;
 
   const run = async (params?: Params): Promise<T> => {
-    resetStateData();
+    !cacheFlag && resetStateData();
 
     typeof onBefore === 'function' && onBefore();
 
