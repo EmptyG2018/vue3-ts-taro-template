@@ -1,0 +1,85 @@
+page {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  background-color: #f5f5f5;
+  .searchCorpus {
+    width: 100%;
+    min-height: 100%;
+    .search--bar {
+      margin-bottom: 60rpx;
+      padding: 20rpx;
+      padding-bottom: 34rpx;
+      // height: 113rpx;
+      box-shadow: 0px 1px 0px 0px rgba(188, 188, 188, 0.36);
+    }
+    .search--realize {
+      display: flex;
+      padding-right: 23rpx;
+      // justify-content: center;
+      align-items: center;
+      height: 61rpx;
+      border: 1rpx solid #000000;
+      border-radius: 30rpx;
+      .search--icon {
+        width: 34rpx;
+        height: 34rpx;
+        margin: 0 23rpx;
+      }
+      .realize--ipt {
+        width: calc(100% - 34rpx - (23rpx * 2));
+      }
+    }
+    .history__search {
+      padding: 20rpx;
+      .history__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 28rpx;
+        .label {
+          font-size: 30rpx;
+          font-family: Source Han Sans CN;
+          font-weight: 500;
+          color: #292929;
+        }
+      }
+      .history__area {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        .history__area-label:nth-child(4n) {
+          margin-right: 0rpx !important;
+        }
+        .history__area-label {
+          flex-shrink: 0;
+          // max-width: 190rpx;
+          width: calc((100% - 22rpx * 3) / 4);
+          margin: 24rpx 0rpx;
+          margin-right: 22rpx;
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+          align-items: center;
+          padding: 15rpx 22rpx;
+          height: 54rpx;
+          background: #ffffff;
+          border: 1px solid #f0f0f0;
+          border-radius: 27rpx;
+          font-size: 24rpx;
+          font-family: Source Han Sans CN;
+          font-weight: 400;
+          color: #292929;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

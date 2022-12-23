@@ -21,6 +21,7 @@ export default defineAppConfig({
     'pages/user/index',
     'pages/store/index',
     'pages/hook/index',
+    'pages/searchCorpus/index',
   ],
   window: {
     backgroundTextStyle: 'light',

@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "template",
   "description": "福利商城",
-  "appid": "wxe4564f638e27bdce",
+  "appid": "touristappid",
   "setting": {
     "urlCheck": true,
     "es6": false,
