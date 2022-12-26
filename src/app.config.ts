@@ -22,6 +22,7 @@ export default defineAppConfig({
     'pages/store/index',
     'pages/hook/index',
     'pages/searchCorpus/index',
+    'pages/evaluate/myComments/index',
   ],
   window: {
     backgroundTextStyle: 'light',

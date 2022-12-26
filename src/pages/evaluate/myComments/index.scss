@@ -1,0 +1,26 @@
+.myComments {
+  background-color: #f5f5f5;
+  padding: 30rpx 20rpx;
+  height: 100vh;
+  overflow: hidden;
+}
+.comments__bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30rpx;
+  margin-bottom: 35rpx;
+  .comments__item {
+    margin-right: 50rpx;
+    font-size: 24rpx;
+    font-family: PingFang SC;
+    font-weight: 500;
+    color: #666666;
+  }
+  .comments__bar--active {
+    font-size: 28rpx;
+    font-family: PingFang SC;
+    font-weight: bold;
+    color: #2a2a2a;
+  }
+}

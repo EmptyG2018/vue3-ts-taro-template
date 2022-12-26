@@ -10,13 +10,6 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/index/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "",
           "pathName": "pages/home/index",
           "query": "",
           "launchMode": "default",
@@ -24,14 +17,14 @@
         },
         {
           "name": "",
-          "pathName": "pages/user/index",
+          "pathName": "pages/evaluate/myComments/index.vue",
           "query": "",
           "launchMode": "default",
           "scene": null
         },
         {
           "name": "",
-          "pathName": "pages/searchCorpus/index",
+          "pathName": "pages/evaluate/myComments/index",
           "query": "",
           "launchMode": "default",
           "scene": null
