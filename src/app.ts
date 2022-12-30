@@ -5,6 +5,11 @@ import {
   Row,
   Col,
   Checkbox,
+  Tabs,
+  TabPane,
+  Sticky,
+  Swiper,
+  SwiperItem,
   Tag,
   Price,
   Button,
@@ -37,6 +42,11 @@ App.use(createPinia())
   .use(Row)
   .use(Col)
   .use(Checkbox)
+  .use(Tabs)
+  .use(TabPane)
+  .use(Sticky)
+  .use(Swiper)
+  .use(SwiperItem)
   .use(Tag)
   .use(Price)
   .use(Button)
