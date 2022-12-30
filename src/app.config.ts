@@ -1,7 +1,7 @@
 export default defineAppConfig({
   pages: [
-    'pages/index/index',
     'pages/login/index',
+    'pages/index/index',
     'pages/hookuseloaddrop1/index',
     'pages/hookuseloadpage1/index',
     'pages/hookuseloadrefresh1/index',

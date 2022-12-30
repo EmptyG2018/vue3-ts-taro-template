@@ -26,6 +26,8 @@ import {
   Popup,
   OverLay,
   Empty,
+  Grid,
+  GridItem,
 } from '@nutui/nutui-taro';
 
 import './app.scss';
@@ -62,6 +64,8 @@ App.use(createPinia())
   .use(Dialog)
   .use(Popup)
   .use(OverLay)
-  .use(Empty);
+  .use(Empty)
+  .use(Grid)
+  .use(GridItem);
 
 export default App;
