@@ -1,5 +1,6 @@
 export default defineAppConfig({
   pages: [
+    'pages/login/index',
     'pages/index/index',
     'pages/hookuseloaddrop1/index',
     'pages/hookuseloadpage1/index',
@@ -23,6 +24,7 @@ export default defineAppConfig({
     'pages/hook/index',
     'pages/searchCorpus/index',
     'pages/evaluate/myComments/index',
+    'pages/goods/index',
   ],
   window: {
     backgroundTextStyle: 'light',

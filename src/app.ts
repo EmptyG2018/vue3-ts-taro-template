@@ -5,6 +5,11 @@ import {
   Row,
   Col,
   Checkbox,
+  Tabs,
+  TabPane,
+  Sticky,
+  Swiper,
+  SwiperItem,
   Tag,
   Price,
   Button,
@@ -22,6 +27,8 @@ import {
   OverLay,
   Empty,
   Navbar,
+  Grid,
+  GridItem,
 } from '@nutui/nutui-taro';
 
 import './app.scss';
@@ -38,6 +45,11 @@ App.use(createPinia())
   .use(Row)
   .use(Col)
   .use(Checkbox)
+  .use(Tabs)
+  .use(TabPane)
+  .use(Sticky)
+  .use(Swiper)
+  .use(SwiperItem)
   .use(Tag)
   .use(Price)
   .use(Button)
@@ -54,6 +66,8 @@ App.use(createPinia())
   .use(Popup)
   .use(OverLay)
   .use(Empty)
-  .use(Navbar);
+  .use(Navbar)
+  .use(Grid)
+  .use(GridItem);
 
 export default App;
