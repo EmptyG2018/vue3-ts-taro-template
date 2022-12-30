@@ -1,4 +1,10 @@
 <template>
+  <SafeArea position="both"> this is safe area. </SafeArea>
+
+  <view class="demo">
+    <SafeArea position="bottom" />
+  </view>
+
   <view class="main">
     <Title :msg="1" />
     <view class="line">
@@ -46,6 +52,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { SafeArea } from '@components/index';
 import Title from '../../components/Title.vue';
 import { useVisible } from '@hooks/index';
 import { useCounterStore } from '@stores/counter';
