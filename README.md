@@ -1,6 +1,6 @@
-# 标题
+# 福利小程序
 
-> 描述内容
+> 福利小程序是主要以活动推广为主的商品销售的小程序平台，该项目主要采用了vue3.0、Typescript、Pinia、Taro、Nut-UI等技术栈开发项目。
 
 
 
@@ -170,6 +170,113 @@ webstorm、以及其他ide后续更新。
 
 
 ### 风格规范
+
+- **注释**
+
+  在所有组件（包含页面）中需要针对 `props` 和 `emits` 需要描述详细字段含义，并强制采用**多行注释**来描述。
+
+  ```vue
+  // FormCell.vue
+  
+  ...
+  /**
+   * @title 填写资料表单控件组件
+   * @param icon 标题图标
+   * @param iconColor 标题图标颜色
+   * @param title 标题
+   * @param value 表单内容
+   * @param arrow 右箭头
+   */
+  withDefaults(
+    defineProps<{
+      icon: string;
+      iconColor: string;
+      title: string;
+      value: string;
+      arrow: boolean;
+    }>(),
+    {
+      icon: undefined,
+      iconColor: undefined,
+      value: undefined,
+      arrow: true,
+    }
+  );
+        
+  /**
+   * @title 自定义事件
+   * @param click 点击
+   */
+  const emits = defineEmits(['click']);
+...
+  ```
+
+  
+  
+  在单独方法函数中，需要描述**参数**和**返回字段**，并强制采用**多行注释**来描述。
+  
+  ```vue
+  // utils.ts
+  
+  ...
+  /**
+   * @title 暂停
+   * @param {Number} timer 暂停时长（ms）
+   * @param ...
+   * @return {Promise.resolve} Promise 成功
+   */
+  export const delay = (timer: number = 1000) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(Math.random());
+      }, timer);
+    });
+  };
+  ...
+  ```
+  
+  
+  
+  在逻辑复杂的代码，可采用**单行注释**，不要采用**多行注释**，不然降低代码可读性，会破环代码结构性。
+  
+  ```vue
+  //demo.vue
+  
+  // 是否工作时间
+  checkWork(timeNum) {
+    const startWork = this.workGroup[0];
+    const endWork = this.workGroup[1];
+    // 计算符合工作开始 与 工作结束 范围内
+    return timeNum <= endWork && timeNum >= startWork;
+  }
+  ```
+  
+  **但也不要盲目注释，对易懂代码无需注释，反而会增加开发成本。**
+  
+  
+  
+- **定义类型**
+
+  为了区分TS定义类型，在使用`interface`定义类型，需要加上 **I** 前缀，例如：IFormProps、ICheckboxProps
+
+  ```typescript
+  interface IFormProps {
+  	...
+  }
+  ```
+
+  **在services中的typings.d.ts中的定义请求响应结果的数据类型可以无需区分。**
+
+  
+
+  
+
+  由于vue组件（pages、components）不能导出组件私有类型，为了解决这个问题，需要在当前组件路径下定义.d.ts文件。例如Menu组件
+
+  - Menu.vue
+  - Menu.d.ts
+
+
 
 - **页面**
 
