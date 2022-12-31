@@ -263,6 +263,11 @@ webstorm、以及其他ide后续更新。
   interface IFormProps {
   	...
   }
+  
+  // type定义不需添加前缀
+  type FormProps {
+  	...
+  }
   ```
 
   **在services中的typings.d.ts中的定义请求响应结果的数据类型可以无需区分。**
@@ -535,3 +540,12 @@ module.exports = {
 
 
 ### 开发人员
+
+[@wangjin](http://192.168.31.222/wangjin)
+
+[@yangwenjun](http://192.168.31.222/yangwenjun)](http://192.168.31.222/wangjin)
+
+[@huchao](http://192.168.31.222/huchao)
+
+[@gxx](http://192.168.31.222/gxx)
+
