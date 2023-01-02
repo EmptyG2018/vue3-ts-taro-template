@@ -1,9 +1,11 @@
 <template>
-  <view class="info-form-card">
+  <view :class="className('__info-form-card')">
     <InfoFormHeader title="完善信息" style="margin-bottom: 20px">
       <template #desc>
-        <text class="tips"
-          >以下带<text class="tip-active">*</text>为必填项</text
+        <text :class="className('__info-form-card__tips')"
+          >以下带<text :class="className('__info-form-card__tips--active')"
+            >*</text
+          >为必填项</text
         >
       </template>
     </InfoFormHeader>
@@ -19,8 +21,15 @@
       label="请选择您希望改善的问题"
       style="margin-bottom: 20px"
     >
-      <InfoFormCheckboxGroup v-model="checks" class="question-group">
-        <view v-for="item in che" :key="item.value" class="question-item">
+      <InfoFormCheckboxGroup
+        v-model="checks"
+        :class="className('__info-form-card__question__row')"
+      >
+        <view
+          v-for="item in che"
+          :key="item.value"
+          :class="className('__info-form-card__question__col')"
+        >
           <InfoFormCheckbox :label="item.label" :value="item.value" />
         </view>
       </InfoFormCheckboxGroup>
@@ -30,11 +39,14 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useClassName } from '@hooks/index';
 import InfoFormItem from './InfoFormItem.vue';
 import InfoFormHeader from './InfoFormHeader.vue';
 import InfoFormCell from './InfoFormCell.vue';
 import InfoFormCheckboxGroup from './InfoFormCheckboxGroup.vue';
 import InfoFormCheckbox from './InfoFormCheckbox.vue';
+
+const { className } = useClassName('_login');
 
 const checks = ref([1, 2, 3]);
 
@@ -79,29 +91,34 @@ const handleClick = () => {
 </script>
 
 <style lang="scss">
-.info-form-card {
-  border-radius: 6px;
-  background-color: #fff;
-  padding: 15px;
-  .tips {
-    color: #9a9a9a;
-    .tip-active {
-      color: #fb424e;
-    }
-  }
-  .question-group {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    .question-item {
-      box-sizing: border-box;
-      width: 50%;
-      margin-bottom: 14rpx;
-      &:nth-child(odd) {
-        padding-right: 7px;
+$module-prefix: '_login';
+.#{$module-prefix} {
+  &__info-form-card {
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 15px;
+    &__tips {
+      color: #9a9a9a;
+      &--active {
+        color: #fb424e;
       }
-      &:nth-child(even) {
-        padding-left: 7px;
+    }
+    &__question {
+      &__row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      &__col {
+        box-sizing: border-box;
+        width: 50%;
+        margin-bottom: 14rpx;
+        &:nth-child(odd) {
+          padding-right: 7px;
+        }
+        &:nth-child(even) {
+          padding-left: 7px;
+        }
       }
     }
   }

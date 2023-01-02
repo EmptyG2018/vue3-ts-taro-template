@@ -1,3 +1,4 @@
+export { default as useClassName } from './useClassName';
 export { default as useVisible } from './useVisible';
 export { default as useToggle } from './useToggle';
 export { default as useLoading } from './useLoading';

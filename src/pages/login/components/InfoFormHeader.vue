@@ -1,13 +1,17 @@
 <template>
-  <view class="info-form-header">
-    <view class="info-form-title">{{ title }}</view>
-    <view class="info-form-desc">
+  <view :class="className('__info-form-header')">
+    <view :class="className('__info-form-header__title')">{{ title }}</view>
+    <view :class="className('__info-form-header__desc')">
       <slot name="desc">{{ desc }}</slot>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
+
+const { className } = useClassName('_login');
+
 /**
  * @title 填写资料表单标题组件
  * @param title 标题
@@ -21,19 +25,22 @@ defineProps<{
 </script>
 
 <style lang="scss">
-.info-form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 14px;
-  .info-form-title {
-    font-size: #2a2a2a;
-    font-weight: 600;
-    font-size: 14px;
-  }
-  .info-form-desc {
-    color: #9a9a9a;
-    font-size: 12px;
+$module-prefix: '_login';
+.#{$module-prefix} {
+  &__info-form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 14px;
+    &__title {
+      font-size: #2a2a2a;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    &__desc {
+      color: #9a9a9a;
+      font-size: 12px;
+    }
   }
 }
 </style>

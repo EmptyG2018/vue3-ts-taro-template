@@ -2,23 +2,23 @@
   <nut-swipe>
     <template #right>
       <nut-button
-        class="action-btn"
+        :class="className('__car-item__action-btn')"
         shape="square"
         type="warning"
         @click="emits('extraClick', 'collection')"
         >移至收藏</nut-button
       >
       <nut-button
-        class="action-btn"
+        :class="className('__car-item__action-btn')"
         shape="square"
         type="danger"
         @click="emits('extraClick', 'delete')"
         >删除</nut-button
       >
     </template>
-    <view class="car-item">
+    <view :class="className('__car-item')">
       <nut-row type="flex" align="start">
-        <nut-col class="selection" :span="2">
+        <nut-col :class="className('__car-item__selection')" :span="2">
           <nut-checkbox
             :model-value="check"
             icon-size="18"
@@ -26,19 +26,19 @@
           />
         </nut-col>
         <nut-col :span="7">
-          <image class="thumb" :src="thumb" />
+          <image :class="className('__car-item__thumb')" :src="thumb" />
         </nut-col>
-        <nut-col class="cell" :span="15">
-          <view class="title">{{ title }}</view>
-          <view class="tags">
+        <nut-col :class="className('__car-item__cell')" :span="15">
+          <view :class="className('__car-item__cell__title')">{{ title }}</view>
+          <view :class="className('__car-item__cell__tags')">
             <nut-tag round color="#F2F2F2" text-color="#999999">{{
               tag
             }}</nut-tag>
           </view>
-          <view class="price">
+          <view :class="className('__car-item__cell__price')">
             <nut-price :price="price" size="normal" :thousands="true" />
           </view>
-          <view class="amount_bar">
+          <view :class="className('__car-item__cell__amount-bar')">
             <input-number
               :model-value="amount"
               readonly
@@ -49,13 +49,16 @@
       </nut-row>
     </view>
   </nut-swipe>
-  <view class="hairline"></view>
+  <view :class="className('__car-item__hairline')"></view>
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
 import { InputNumber } from '@components/index';
 
-const props = withDefaults(
+const { className } = useClassName('_mx');
+
+withDefaults(
   defineProps<{
     check: boolean;
     thumb: string;
@@ -76,60 +79,59 @@ const emits = defineEmits<{
 </script>
 
 <style lang="scss">
-.action-btn {
-  height: 100%;
-}
-
-.car-item {
-  position: relative;
-  background-color: #fff;
-  padding: 30rpx 32rpx;
-  .selection {
-    display: flex;
-    align-items: center;
-  }
-  .thumb {
-    display: block;
-    width: 176rpx;
-    height: 176rpx;
-  }
-  .cell {
-    .title {
-      margin: 0;
-      padding: 0;
-      font-size: 32rpx;
-      color: #2a2a2a;
-      font-weight: 600;
-      line-height: 1.4;
-      display: -webkit-box;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      word-wrap: break-word;
-      white-space: normal;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      margin-bottom: 12rpx;
+$module-prefix: '_mx';
+.#{$module-prefix} {
+  &__car-item {
+    &__action-btn {
+      height: 100%;
     }
-    .tags {
-      margin-bottom: 12rpx;
+    &__selection {
+      display: flex;
+      align-items: center;
     }
-    .price {
-      .nut-price--normal {
-        font-size: 18px;
+    &__thumb {
+      display: block;
+      width: 176rpx;
+      height: 176rpx;
+    }
+    &__cell {
+      &__title {
+        margin: 0;
+        padding: 0;
+        font-size: 32rpx;
+        color: #2a2a2a;
         font-weight: 600;
+        line-height: 1.4;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+        white-space: normal;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        margin-bottom: 12rpx;
+      }
+      &__tags {
+        margin-bottom: 12rpx;
+      }
+      &__price {
+        .nut-price--normal {
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+      &__amount-bar {
+        position: absolute;
+        bottom: 30rpx;
+        right: 32rpx;
       }
     }
-    .amount_bar {
-      position: absolute;
-      bottom: 30rpx;
-      right: 32rpx;
+    &__hairline {
+      width: 94%;
+      height: 1px;
+      background-color: #efefef;
+      margin: 0 auto;
     }
   }
-}
-.hairline {
-  width: 94%;
-  height: 1px;
-  background-color: #efefef;
-  margin: 0 auto;
 }
 </style>

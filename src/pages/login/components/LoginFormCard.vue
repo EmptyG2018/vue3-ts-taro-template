@@ -1,6 +1,6 @@
 <template>
-  <view class="login-form-card">
-    <view class="container-wrap">
+  <view :class="className('__login-form-card')">
+    <view :class="className('__login-form-card__wrap')">
       <ActionBtn style="margin-bottom: 30px" color="#06AD56"
         >快捷登录</ActionBtn
       >
@@ -10,16 +10,19 @@
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
 import ActionBtn from './ActionBtn.vue';
+
+const { className } = useClassName('_login');
 </script>
 
 <style lang="scss">
-.login-form-card {
-  padding-top: 85px;
-  .container-wrap {
-    padding: 0 14px;
-    .action-btn {
-      border-radius: 6px;
+$module-prefix: '_login';
+.#{$module-prefix} {
+  &__login-form-card {
+    padding-top: 85px;
+    &__wrap {
+      padding: 0 14px;
     }
   }
 }

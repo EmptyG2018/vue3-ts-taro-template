@@ -1,13 +1,16 @@
 <template>
-  <view class="info-form-checkbox-group">
+  <view :class="className('__info-form-checkbox-group')">
     <slot></slot>
   </view>
 </template>
 
 <script setup lang="ts">
 import { toRefs, provide } from 'vue';
+import { useClassName } from '@hooks/index';
 import { CheckedsInject, OnChangeInject } from './InfoFormCheckboxGroup';
 import type { CheckboxValue } from './InfoFormCheckbox';
+
+const { className } = useClassName('_login');
 
 /**
  * @title 填写资料表单复选框组合组件
@@ -40,5 +43,3 @@ const onChange = (value: CheckboxValue) => {
 provide(CheckedsInject, checkeds);
 provide(OnChangeInject, onChange);
 </script>
-
-<style lang="scss"></style>

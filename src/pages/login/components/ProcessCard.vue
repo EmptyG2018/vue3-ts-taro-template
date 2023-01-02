@@ -1,18 +1,22 @@
 <template>
-  <view class="process-card">
+  <view :class="className('__process-card')">
     <nut-row type="flex">
       <nut-col v-for="item in items" :key="item.key" :span="12">
         <view
-          class="process-card-item"
-          :class="{ 'process-card-item--active': checkedSelected(item) }"
+          :class="{
+            [className('__process-card__tab')]: true,
+            [className('__process-card__tab--active')]: checkedSelected(item),
+          }"
         >
-          <view class="process-card-cell">
+          <view :class="className('__process-card__cell')">
             <nut-icon
               size="14"
               :name="item.icon"
               :color="checkedSelected(item) ? activeColor : undefined"
             ></nut-icon>
-            <text class="process-card-title">{{ item.label }}</text>
+            <text :class="className('__process-card__title')">{{
+              item.label
+            }}</text>
           </view>
           <nut-icon
             size="14"
@@ -26,7 +30,10 @@
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
 import type { ProcessKey, ProcessItem } from './ProcessCard';
+
+const { className } = useClassName('_login');
 
 /**
  * @title 登录流程组件
@@ -53,25 +60,28 @@ const checkedSelected = (record: ProcessItem) => record.key === props.activeKey;
 </script>
 
 <style lang="scss">
-.process-card {
-  background-color: #fff;
-  border-radius: 6px;
-  overflow: hidden;
-  .process-card-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #2a2a2a;
-    padding: 16px 24px;
-    font-size: 14px;
-    &.process-card-item--active {
-      color: v-bind(activeColor);
+$module-prefix: '_login';
+.#{$module-prefix} {
+  &__process-card {
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    &__tab {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #2a2a2a;
+      padding: 16px 24px;
+      font-size: 14px;
+      &--active {
+        color: v-bind(activeColor);
+      }
     }
-    .process-card-cell {
+    &__cell {
       display: flex;
       align-items: center;
     }
-    .process-card-title {
+    &__title {
       margin-left: 8px;
     }
   }

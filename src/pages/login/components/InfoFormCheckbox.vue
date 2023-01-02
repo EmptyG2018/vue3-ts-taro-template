@@ -1,7 +1,10 @@
 <template>
-  <view class="info-form-checkbox" @click="onChange && onChange(value)">
-    <view class="info-form-checkbox-label">{{ label }}</view>
-    <view class="info-form-checkbox-check">
+  <view
+    :class="className('__info-form-checkbox')"
+    @click="onChange && onChange(value)"
+  >
+    <view :class="className('__info-form-checkbox__label')">{{ label }}</view>
+    <view :class="className('__info-form-checkbox__check')">
       <nut-icon
         name="checked"
         size="14"
@@ -13,8 +16,11 @@
 
 <script setup lang="ts">
 import { Ref, inject, computed } from 'vue';
+import { useClassName } from '@hooks/index';
 import type { CheckboxValue } from './InfoFormCheckbox';
 import { CheckedsInject, OnChangeInject } from './InfoFormCheckboxGroup';
+
+const { className } = useClassName('_login');
 
 /**
  * @title 填写资料表单复选框组件
@@ -34,16 +40,19 @@ const checked = computed(() => checkeds?.value.includes(props.value));
 </script>
 
 <style lang="scss">
-.info-form-checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 16px;
-  background-color: #f3f5f7;
-  border-radius: 6px;
-  .info-form-checkbox-label {
-    font-size: 14px;
-    color: #2a2a2a;
+$module-prefix: '_login';
+.#{$module-prefix} {
+  &__info-form-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background-color: #f3f5f7;
+    border-radius: 6px;
+    &__label {
+      font-size: 14px;
+      color: #2a2a2a;
+    }
   }
 }
 </style>

@@ -10,6 +10,13 @@
       "list": [
         {
           "name": "",
+          "pathName": "pages/login/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
           "pathName": "pages/home/index",
           "query": "",
           "launchMode": "default",
@@ -45,7 +52,7 @@
         },
         {
           "name": "",
-          "pathName": "pages/login/index",
+          "pathName": "pages/car/index",
           "query": "",
           "launchMode": "default",
           "scene": null

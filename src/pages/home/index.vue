@@ -28,5 +28,3 @@ useLoad(() => {
   console.log(visible);
 });
 </script>
-
-<style lang="less" scoped></style>

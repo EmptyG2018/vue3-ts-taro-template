@@ -1,8 +1,12 @@
 <template>
-  <view class="title">{{ props.title }}</view>
+  <view :class="className('title')">{{ props.title }}</view>
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
+
+const { className } = useClassName('_mx');
+
 const props = withDefaults(
   defineProps<{
     title: string;
@@ -15,9 +19,12 @@ const props = withDefaults(
 </script>
 
 <style lang="scss">
-.title {
-  font-size: 40rpx;
-  font-weight: 600;
-  margin: 120rpx 0 60rpx 0;
+$module-prefix: '_mx';
+.#{$module-prefix} {
+  &__title {
+    font-size: 40rpx;
+    font-weight: 600;
+    margin: 120rpx 0 60rpx 0;
+  }
 }
 </style>

@@ -171,6 +171,116 @@ webstorm、以及其他ide后续更新。
 
 ### 风格规范
 
+- **样式**
+
+  由于小程序taro对vue的`<style scoped>`不支持样式私有化方案，不过也有其他的解决方案，但在综合考虑情况下， 最终**弃用样式私有化**方案，采用修改成本最小的一种解决方案，**通过针对约束页面以及页面组件的类名的这种方式解决样式全局污染问题**。
+
+  
+
+  比例登录页面，
+
+  ```vue
+  // login/index.vue
+  
+  <template>
+    <SafeArea position="both">
+      <view :class="className('__background')">
+        <view :class="className('__background__header')">
+          <text :class="className('__background__header__title')"
+            >欢迎登录柏溪福利小程序</text
+          >
+          <text :class="className('__background__header__desc')"
+            >完善信息，我们将会为您提供专属服务</text
+          >
+        </view>
+      </view>
+    </SafeArea>
+  </template>
+  
+  <script setup lang="ts">
+  import { useClassName } from '@hooks/index';
+   
+  const { className } = useClassName('_login');
+  </script>
+  ```
+
+  ```scss
+  // login/index.scss
+  
+  $module-prefix: '_login';
+  
+  .#{$module-prefix} {
+      &__container__wrap {
+        padding: 0 10px;
+      }
+      &__background {
+        box-sizing: border-box;
+        height: 260px;
+        padding-top: 82px;
+        &__header {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 0 25px;
+          color: #2a2a2a;
+          &__title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+          }
+          &__desc {
+            font-size: 12px;
+          }
+        }
+      }
+  }
+  ```
+
+
+  登录页面中的页面组件
+
+  ```vue
+  // login/components/LoginFormCard.vue
+  
+  <template>
+    <view :class="className('__login-form-card')">
+      <view :class="className('__login-form-card__wrap')">
+        <ActionBtn style="margin-bottom: 30px" color="#06AD56"
+          >快捷登录</ActionBtn
+        >
+        <ActionBtn style="margin-bottom: 30px">手机号登录</ActionBtn>
+      </view>
+    </view>
+  </template>
+  
+  <script setup lang="ts">
+  import { useClassName } from '@hooks/index';
+  import ActionBtn from './ActionBtn.vue';
+  
+  const { className } = useClassName('_login');
+  </script>
+  
+  <style lang="scss">
+  $module-prefix: '_login';
+  .#{$module-prefix} {
+    &__login-form-card {
+      padding-top: 85px;
+      &__wrap {
+        padding: 0 14px;
+      }
+    }
+  }
+  </style>
+  
+  
+  ```
+
+  **页面要以页面命名。因为页面名是唯一的。页面组件要以页面+__组件名命名**，例如LoginFormCard（登录表单）那它的前缀就是`login_login-form-card`，为了考虑通用组件会与第三方UI库样式类同名，所以**通用组件类名必须以`_mx`+__文件名为前缀**。例如SafeArea（安全区组件），那它的前缀就是`_mx__safe-area`
+
+  如对scss语法不熟悉，可以查看[scss变量](https://sass-lang.com/documentation/variables)
+
+
+
 - **注释**
 
   在所有组件（包含页面）中需要针对 `props` 和 `emits` 需要描述详细字段含义，并强制采用**多行注释**来描述。

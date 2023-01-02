@@ -1,9 +1,11 @@
 <template>
   <view
-    class="safe-area"
     :class="{
-      'safe-area--top': position === 'both' || position === 'top',
-      'safe-area--bottom': position === 'both' || position === 'bottom',
+      [className('__safe-area')]: true,
+      [className('__safe-area--top')]:
+        position === 'both' || position === 'top',
+      [className('__safe-area--bottom')]:
+        position === 'both' || position === 'bottom',
     }"
   >
     <slot></slot>
@@ -11,6 +13,10 @@
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
+
+const { className } = useClassName('_mx');
+
 withDefaults(
   defineProps<{
     position?: 'top' | 'bottom' | 'both';
@@ -22,14 +28,17 @@ withDefaults(
 </script>
 
 <style lang="scss">
-.safe-area {
-  &.safe-area--top {
-    padding-top: constant(safe-area-inset-top);
-    padding-top: env(safe-area-inset-top);
-  }
-  &.safe-area--bottom {
-    padding-bottom: constant(safe-area-inset-bottom);
-    padding-bottom: env(safe-area-inset-bottom);
+$module-prefix: '_mx';
+.#{$module-prefix} {
+  &__safe-area {
+    &__safe-area--top {
+      padding-top: constant(safe-area-inset-top);
+      padding-top: env(safe-area-inset-top);
+    }
+    &__safe-area--bottom {
+      padding-bottom: constant(safe-area-inset-bottom);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
   }
 }
 </style>

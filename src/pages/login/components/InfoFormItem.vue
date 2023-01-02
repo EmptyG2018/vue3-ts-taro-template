@@ -1,19 +1,23 @@
 <template>
-  <view class="info-form-item">
+  <view :class="className('__info-form-item')">
     <view
-      class="info-form-item-required"
-      :class="{ 'info-form-item-required--no-required': !required }"
+      :class="{
+        [className('__info-form-item__required')]: true,
+        [className('__info-form-item__required--no-required')]: !required,
+      }"
     >
     </view>
 
-    <view class="info-form-item-main">
-      <view v-if="label || desc" class="info-form-item-header">
-        <view class="info-form-item-label">{{ label }}</view>
-        <view class="info-form-item-desc">
+    <view :class="className('__info-form-item__main')">
+      <view v-if="label || desc" :class="className('__info-form-item__header')">
+        <view :class="className('__info-form-item__header__label')">{{
+          label
+        }}</view>
+        <view :class="className('__info-form-item__header__desc')">
           <slot name="desc">{{ desc }}</slot>
         </view>
       </view>
-      <view class="info-form-item-content">
+      <view :class="className('__info-form-item__content')">
         <slot></slot>
       </view>
     </view>
@@ -21,6 +25,10 @@
 </template>
 
 <script setup lang="ts">
+import { useClassName } from '@hooks/index';
+
+const { className } = useClassName('_login');
+
 /**
  * @title 填写资料表单单选组件
  * @param required 必选项
@@ -36,31 +44,34 @@ defineProps<{
 </script>
 
 <style lang="scss">
-.info-form-item {
-  display: flex;
-  .info-form-item-required {
-    width: 14px;
-    min-height: 1px;
-    color: #fb424e;
-    &::after {
-      content: '*';
-      font-size: 14px;
+$module-prefix: '_login';
+.#{$module-prefix} {
+  &__info-form-item {
+    display: flex;
+    &__required {
+      width: 14px;
+      min-height: 1px;
+      color: #fb424e;
+      &::after {
+        content: '*';
+        font-size: 14px;
+      }
+      &--no-required {
+        color: transparent;
+      }
     }
-    &.info-form-item-required--no-required {
-      color: transparent;
+    &__main {
+      flex: 1;
+      flex-shrink: 0;
+      overflow: hidden;
     }
-  }
-  .info-form-item-main {
-    flex: 1;
-    flex-shrink: 0;
-    overflow: hidden;
-    .info-form-item-header {
+    &__header {
       margin-bottom: 10px;
-      .info-form-item-label {
+      &__label {
         font-size: 14px;
         color: #2a2a2a;
       }
-      .info-form-item-desc {
+      &__desc {
         color: #9a9a9a;
         font-size: 12px;
       }
