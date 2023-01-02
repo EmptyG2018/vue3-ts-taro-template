@@ -5,6 +5,7 @@
 - [useVisible](#useVisible)
 - [useLoading](#useLoading)
 - [usePaging](#usePaging)
+- [useClassName](#useClassName)
 - [useAsync](#useAsync)
 - [useRequest](#useRequest)
 - [useLoadPage](#useLoadPage)
@@ -184,6 +185,67 @@ const { loading, showLoading, hideLoading } = useLoading(defaultValue?: boolean)
 ```
 
 
+
+### useClassName
+
+用于管理组件私有化样式类名
+
+```vue
+<template>
+  <SafeArea position="both">
+    <view :class="className('__background')">
+      <view :class="className('__background__header')">
+        <text :class="className('__background__header__title')"
+          >欢迎登录柏溪福利小程序</text
+        >
+        <text :class="className('__background__header__desc')"
+          >完善信息，我们将会为您提供专属服务</text
+        >
+        <text :class="className(['__background__header__tips', '__background__header__tips--active'])"
+          >完善信息，我们将会为您提供专属服务</text
+        >
+      </view>
+    </view>
+  </SafeArea>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useClassName } from '@hooks/index';
+import { SafeArea } from '@components/index';
+
+const { className } = useClassName('_login');
+</script>
+
+<style lang="scss">
+@import './index.scss';
+</style>
+
+```
+
+
+
+**API**
+
+```typescript
+const { className } = useClassName(prefixCls: string);
+```
+
+
+
+**Params**
+
+| 参数      | 说明                 | 类型   | 默认 |
+| --------- | -------------------- | ------ | ---- |
+| prefixCls | 必选项，传入前缀类名 | string | -    |
+
+
+
+**Result**
+
+| 参数      | 说明         | 类型                                      |
+| :-------- | ------------ | ----------------------------------------- |
+| className | 设置样式类名 | (className: string \| string[]) => string |
 
 
 
