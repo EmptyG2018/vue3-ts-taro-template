@@ -31,11 +31,11 @@ withDefaults(
 $module-prefix: '_mx';
 .#{$module-prefix} {
   &__safe-area {
-    &__safe-area--top {
+    &--top {
       padding-top: constant(safe-area-inset-top);
       padding-top: env(safe-area-inset-top);
     }
-    &__safe-area--bottom {
+    &--bottom {
       padding-bottom: constant(safe-area-inset-bottom);
       padding-bottom: env(safe-area-inset-bottom);
     }

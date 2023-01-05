@@ -1,10 +1,10 @@
+
 # 福利小程序
 
-> 福利小程序是主要以活动推广为主的商品销售的小程序平台，该项目主要采用了vue3.0、Typescript、Pinia、Taro、Nut-UI等技术栈开发项目。
+福利小程序是主要以活动推广为主的商品销售的小程序平台，该项目主要采用了vue3.0、Typescript、Pinia、Taro、Nut-UI等技术栈开发项目。
 
 
-
-### 快捷入口
+## 快捷入口
 
 - [Vue 3.0](https://cn.vuejs.org/guide/introduction.html)
 - [Taro内置组件库](https://taro-docs.jd.com/docs/components-desc)
@@ -13,13 +13,12 @@
 - [常见Hook语法](./docs/hook.md)
 
 
-
-### 目录
-
+## 附录
 
 - [技术栈](#技术栈)
 - [项目结构](#项目结构)
-- [npm脚本](#npm脚本)
+- [安装依赖](#安装依赖)
+- [npm命令](#npm命令)
 - [IDE插件](#IDE插件)
 - [规范标准](#规范标准)
 - [风格规范](#风格规范)
@@ -29,10 +28,7 @@
 - [开发人员](#开发人员)
 
 
-
-### 技术栈
-
-目前该项目采用以下技术栈：
+## 技术栈
 
 - [微信小程序官方开发文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
 - [Taro](https://taro-docs.jd.com/docs/) 是一个开放式跨端跨框架解决方案，支持使用 React/Vue/Nerv 等框架来开发 微信 / 京东 / 百度 / 支付宝 / 字节跳动 / QQ / 飞书 小程序 / H5 / RN 等应用。
@@ -42,30 +38,26 @@
 - [Nut-UI](https://nutui.jd.com/#/) 是京东风格的轻量级移动端 Vue 组件库。
 - [Pinia](https://pinia.vuejs.org/) 是拥有组合式 API 的 Vue 状态管理库。
 - [Git](https://git-scm.com/) 是一个免费的开源分布式版本控制系统，旨在快速高效地处理从小型项目到大型项目的所有内容。
-
-
-
-### 项目结构
+## 项目结构
 
 ![tree](./docs/tree.png)
-
-
-
-### npm 脚本
+## 安装依赖
 
 安装依赖
 
-```shell
-# 使用 npm
-npm install
+```bash
+  # 使用 npm
+  npm install
 
-# OR 使用 yarn
-yarn
+  # OR 使用 yarn
+  yarn
 ```
+    
+## npm 命令
 
 开发环境运行
 
-```shell
+```bash
 # 使用 npm
 npm run dev:weapp
 
@@ -75,91 +67,81 @@ yarn dev:weapp
 
 生产环境运行
 
-```shell
+```bash
 npm run prd:weapp
 ```
 
 开发环境打包
 
-```shell
+```bash
 npm run build:dev:weapp
 ```
 
 生产环境打包
 
-```shell
+```bash
 npm run build:prd:weapp
 ```
 
 代码检测
 
-```shell
+```bash
 npm run lint:eslint
 ```
 
 代码检查（仅限检查已改动的文件）
 
-```shell
+```bash
 npm run lint:lint-staged
 ```
 
 修复代码
 
-```shell
+```bash
 npm run fix:eslint
 ```
 
 格式化代码
 
-```shell
+```bash
 npm run fix:prettier
 ```
 
 安装 git hook 管理
 
-```shell
+```bash
 npm run prepare
 ```
 
 commit 提交（包含规范描述）
 
-```shell
+```bash
 npm run commit
 ```
 
 生成模版
 
-```shell
+```bash
 npm run plop
 ```
 
 升级依赖
 
-```shell
+```bash
 npm run deps
 ```
-
-
-
-### IDE插件
+## IDE 插件
 
 采用vs code开发，需安装以下插件，方便项目开发，其作用编码、风格、自动填充、语法高亮等辅助功能。
 
 - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
-
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-
 - [JavaScript and TypeScript Nightly](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-next)
-
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
 - [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 webstorm、以及其他ide后续更新。
-
-
-
-### 规范标准
+## 规范标准
 
 目前该项目采用以下规范标准：
 
@@ -167,21 +149,19 @@ webstorm、以及其他ide后续更新。
 - [Standard  js语法规范规则](https://standardjs.com/)
 - [bem css样式命名规范](https://getbem.com/)
 
-
-
-### 风格规范
+## 风格规范
 
 - **样式**
 
   由于小程序taro对vue的`<style scoped>`不支持样式私有化方案，不过也有其他的解决方案，但在综合考虑情况下， 最终**弃用样式私有化**方案，采用修改成本最小的一种解决方案，**通过针对约束页面以及页面组件的类名的这种方式解决样式全局污染问题**。
 
-  
+
 
   比例登录页面，
 
   ```vue
   // login/index.vue
-  
+
   <template>
     <SafeArea position="both">
       <view :class="className('__background')">
@@ -196,19 +176,19 @@ webstorm、以及其他ide后续更新。
       </view>
     </SafeArea>
   </template>
-  
+
   <script setup lang="ts">
   import { useClassName } from '@hooks/index';
-   
+
   const { className } = useClassName('_login');
   </script>
   ```
 
   ```scss
   // login/index.scss
-  
+
   $module-prefix: '_login';
-  
+
   .#{$module-prefix} {
       &__container__wrap {
         padding: 0 10px;
@@ -241,7 +221,7 @@ webstorm、以及其他ide后续更新。
 
   ```vue
   // login/components/LoginFormCard.vue
-  
+
   <template>
     <view :class="className('__login-form-card')">
       <view :class="className('__login-form-card__wrap')">
@@ -252,14 +232,14 @@ webstorm、以及其他ide后续更新。
       </view>
     </view>
   </template>
-  
+
   <script setup lang="ts">
   import { useClassName } from '@hooks/index';
   import ActionBtn from './ActionBtn.vue';
-  
+
   const { className } = useClassName('_login');
   </script>
-  
+
   <style lang="scss">
   $module-prefix: '_login';
   .#{$module-prefix} {
@@ -271,11 +251,11 @@ webstorm、以及其他ide后续更新。
     }
   }
   </style>
-  
-  
+
+
   ```
 
-  **页面要以页面命名。因为页面名是唯一的。页面组件要以页面+__组件名命名**，例如LoginFormCard（登录表单）那它的前缀就是`login_login-form-card`，为了考虑通用组件会与第三方UI库样式类同名，所以**通用组件类名必须以`_mx`+__文件名为前缀**。例如SafeArea（安全区组件），那它的前缀就是`_mx__safe-area`
+  **页面的前缀要以_页面文件名命名，因为页面文件名是唯一的**。例如Login（登录）那它的前缀就是`_login`，**页面组件的前缀要以_页面 + -component命名**，例如LoginFormCard（登录表单）那它的前缀就是`_login-component`，为了考虑通用组件会与第三方UI库样式类同名，所以**通用组件的前缀必须以`_mx`为前缀**。例如SafeArea（安全区组件），那它的前缀就是`_mx`
 
   如对scss语法不熟悉，可以查看[scss变量](https://sass-lang.com/documentation/variables)
 
@@ -287,7 +267,7 @@ webstorm、以及其他ide后续更新。
 
   ```vue
   // FormCell.vue
-  
+
   ...
   /**
    * @title 填写资料表单控件组件
@@ -312,7 +292,7 @@ webstorm、以及其他ide后续更新。
       arrow: true,
     }
   );
-        
+
   /**
    * @title 自定义事件
    * @param click 点击
@@ -321,13 +301,13 @@ webstorm、以及其他ide后续更新。
 ...
   ```
 
-  
-  
+
+
   在单独方法函数中，需要描述**参数**和**返回字段**，并强制采用**多行注释**来描述。
-  
+
   ```vue
   // utils.ts
-  
+
   ...
   /**
    * @title 暂停
@@ -344,14 +324,14 @@ webstorm、以及其他ide后续更新。
   };
   ...
   ```
-  
-  
-  
+
+
+
   在逻辑复杂的代码，可采用**单行注释**，不要采用**多行注释**，不然降低代码可读性，会破环代码结构性。
-  
+
   ```vue
   //demo.vue
-  
+
   // 是否工作时间
   checkWork(timeNum) {
     const startWork = this.workGroup[0];
@@ -360,11 +340,11 @@ webstorm、以及其他ide后续更新。
     return timeNum <= endWork && timeNum >= startWork;
   }
   ```
-  
+
   **但也不要盲目注释，对易懂代码无需注释，反而会增加开发成本。**
-  
-  
-  
+
+
+
 - **定义类型**
 
   为了区分TS定义类型，在使用`interface`定义类型，需要加上 **I** 前缀，例如：IFormProps、ICheckboxProps
@@ -373,7 +353,7 @@ webstorm、以及其他ide后续更新。
   interface IFormProps {
   	...
   }
-  
+
   // type定义不需添加前缀
   type FormProps {
   	...
@@ -382,9 +362,9 @@ webstorm、以及其他ide后续更新。
 
   **在services中的typings.d.ts中的定义请求响应结果的数据类型可以无需区分。**
 
-  
 
-  
+
+
 
   由于vue组件（pages、components）不能导出组件私有类型，为了解决这个问题，需要在当前组件路径下定义.d.ts文件。例如Menu组件
 
@@ -496,10 +476,7 @@ export default {
 };
 
 ```
-
-
-
-### 环境变量
+## 环境变量
 
 在项目根目录中的`config`目录中包含**dev.js (开发环境)**、**prod.js (生产环境)**这两个文件中，在`defineConstants`字段可定义变量。**需要注意在定义变量需要`JSON.stringify`方法包裹使用**。案例见以下：
 
@@ -531,8 +508,7 @@ console.log(REQUEST_URL);
 如有不清楚，也可访问官方提供的针对[环境变量](https://taro-docs.jd.com/docs/config-detail#env)的说明。
 
 
-
-### 代码调试
+## 代码调试
 
 在taro框架下开发vue 3.0项目时，已经支持vue devtools工具代码调试，但仍处于实验性阶段，可能存在一些的调试问题。
 
@@ -557,8 +533,7 @@ config = {
 重跑项目即可。
 
 
-
-### 别名引用
+## 别名引用
 
 通过别名引用配置可以简化很长的模块引用，也很好地解决vs code不能跳转相对应文件中，以减少开发者对路径问题的烦恼。
 
@@ -648,14 +623,9 @@ module.exports = {
 如有不清楚，也可访问官方提供的针对[路径别名](https://taro-docs.jd.com/docs/config-detail#alias)的说明。
 
 
+## 开发人员
 
-### 开发人员
-
-[@wangjin](http://192.168.31.222/wangjin)
-
-[@yangwenjun](http://192.168.31.222/yangwenjun)](http://192.168.31.222/wangjin)
-
-[@huchao](http://192.168.31.222/huchao)
-
-[@gxx](http://192.168.31.222/gxx)
-
+- [@wangjin](http://192.168.31.222/wangjin)
+- [@yangwenjun](http://192.168.31.222/yangwenjun)
+- [@huchao](http://192.168.31.222/huchao)
+- [@gxx](http://192.168.31.222/gxx)
