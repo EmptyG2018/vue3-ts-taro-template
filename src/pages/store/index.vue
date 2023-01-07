@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCounterStore } from '@stores/counter';
+import { useCounterStore } from '@stores/index';
 import { useLoad, useRouter } from '@tarojs/taro';
 import { useVisible, useRequest } from '@hooks/index';
 import { GetDemo } from '@services/index';

@@ -52,7 +52,7 @@
   # OR 使用 yarn
   yarn
 ```
-    
+
 ## npm 命令
 
 开发环境运行
@@ -237,7 +237,7 @@ webstorm、以及其他ide后续更新。
   import { useClassName } from '@hooks/index';
   import ActionBtn from './ActionBtn.vue';
 
-  const { className } = useClassName('_login');
+  const { className } = useClassName('_login-component');
   </script>
 
   <style lang="scss">
@@ -611,7 +611,7 @@ module.exports = {
 <script setup lang="ts">
   import appConfig from '@/app.config';
   import { useVisible } from '@hooks/index';
-  import { useCounterStore } from '@stores/counter';
+  import { useCounterStore } from '@stores/index';
   import { GetProfile } from '@services/index';
 </script>
 

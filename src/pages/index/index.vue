@@ -55,12 +55,17 @@ import { reactive } from 'vue';
 import { SafeArea } from '@components/index';
 import Title from '../../components/Title.vue';
 import { useVisible } from '@hooks/index';
-import { useCounterStore } from '@stores/counter';
+import { useCounterStore, useSystemStore } from '@stores/index';
 import { navigateTo, useDidShow, useLoad } from '@tarojs/taro';
 import wxConfig from '@/wx.config';
 
 const { visible: welcome } = useVisible(false);
+
 const counterStore = useCounterStore();
+
+const { appInfo } = useSystemStore();
+
+console.log('appInfo', appInfo);
 
 type StateProps = {
   version: string;
