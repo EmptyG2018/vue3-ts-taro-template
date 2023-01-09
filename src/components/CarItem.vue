@@ -58,6 +58,15 @@ import { InputNumber } from '@components/index';
 
 const { className } = useClassName('_mx');
 
+/**
+ * @title 购物车单行组件
+ * @param check 选中状态
+ * @param thumb 商品缩略图
+ * @param title 商品标题
+ * @param tag 商品标签
+ * @param price 商品价格
+ * @param amount 商品数量
+ */
 withDefaults(
   defineProps<{
     check: boolean;
@@ -71,6 +80,13 @@ withDefaults(
     check: false,
   }
 );
+
+/**
+ * @title 自定义事件
+ * @param extraClick 点击操作事件 (collection：收藏，delete：删除)
+ * @param checkChange 选中切换事件
+ * @param amountChange 数量改变事件
+ */
 const emits = defineEmits<{
   (e: 'extraClick', type: 'collection' | 'delete'): void;
   (e: 'checkChange', state: boolean): void;

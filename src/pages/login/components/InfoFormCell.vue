@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { useClassName } from '@hooks/index';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 
 /**
  * @title 填写资料表单控件组件
@@ -62,7 +62,7 @@ const emits = defineEmits(['click']);
 </script>
 
 <style lang="scss">
-$module-prefix: '_login';
+$module-prefix: '_login-component';
 .#{$module-prefix} {
   &__info-form-cell {
     display: flex;

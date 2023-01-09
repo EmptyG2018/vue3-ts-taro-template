@@ -10,7 +10,7 @@ import { useClassName } from '@hooks/index';
 import { CheckedsInject, OnChangeInject } from './InfoFormCheckboxGroup';
 import type { CheckboxValue } from './InfoFormCheckbox';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 
 /**
  * @title 填写资料表单复选框组合组件

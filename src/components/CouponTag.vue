@@ -24,6 +24,12 @@ import { useClassName } from '@hooks/index';
 
 const { className } = useClassName('_mx');
 
+/**
+ * @title 优惠劵标签组件
+ * @param prefix 前缀
+ * @param price 价格
+ * @param size 尺寸
+ */
 withDefaults(
   defineProps<{
     prefix: string;
@@ -42,16 +48,16 @@ $module-prefix: '_mx';
 .#{$module-prefix} {
   &__coupon-tag {
     display: inline-block;
-    font-size: 24rpx;
-    border-radius: 4rpx;
-    border: 1rpx solid #fd3b68;
+    font-size: 12px;
+    border-radius: 2px;
+    border: 1px solid #fd3b68;
     color: #fd3b68;
     overflow: hidden;
     &--mini {
-      font-size: 20rpx;
-      .coupon-tag__row {
-        width: 48rpx;
-        height: 32rpx;
+      font-size: 10px;
+      .#{$module-prefix}__coupon-tag__row {
+        width: 24px;
+        height: 16px;
       }
     }
     &__row {

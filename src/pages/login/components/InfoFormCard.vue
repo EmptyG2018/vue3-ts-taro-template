@@ -46,7 +46,7 @@ import InfoFormCell from './InfoFormCell.vue';
 import InfoFormCheckboxGroup from './InfoFormCheckboxGroup.vue';
 import InfoFormCheckbox from './InfoFormCheckbox.vue';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 
 const checks = ref([1, 2, 3]);
 
@@ -91,7 +91,7 @@ const handleClick = () => {
 </script>
 
 <style lang="scss">
-$module-prefix: '_login';
+$module-prefix: '_login-component';
 .#{$module-prefix} {
   &__info-form-card {
     border-radius: 6px;

@@ -13,11 +13,11 @@
 import { useClassName } from '@hooks/index';
 import ActionBtn from './ActionBtn.vue';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 </script>
 
 <style lang="scss">
-$module-prefix: '_login';
+$module-prefix: '_login-component';
 .#{$module-prefix} {
   &__login-form-card {
     padding-top: 85px;

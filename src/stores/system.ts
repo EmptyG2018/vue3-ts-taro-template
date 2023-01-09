@@ -7,7 +7,7 @@ import {
 } from '@tarojs/taro';
 import { defineStore } from 'pinia';
 
-export default defineStore('sytem', {
+export default defineStore('system', {
   state() {
     return {
       // 胶囊按钮信息

@@ -11,6 +11,7 @@
 - [Nut-UI组件库](https://nutui.jd.com/#/zh-CN/component/button)
 - [常见GIt命令大全](./docs/git.md)
 - [常见Hook语法](./docs/hook.md)
+- [通用组件语法](./docs/component.md)
 
 
 ## 附录

@@ -27,7 +27,7 @@
 <script setup lang="ts">
 import { useClassName } from '@hooks/index';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 
 /**
  * @title 填写资料表单单选组件
@@ -44,7 +44,7 @@ defineProps<{
 </script>
 
 <style lang="scss">
-$module-prefix: '_login';
+$module-prefix: '_login-component';
 .#{$module-prefix} {
   &__info-form-item {
     display: flex;

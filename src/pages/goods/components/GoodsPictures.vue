@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import { useClassName } from '@hooks/index';
 
-const { className } = useClassName('_goods');
+const { className } = useClassName('_goods-component');
 
 /**
  * @title 商品图片详情组件
@@ -28,7 +28,7 @@ withDefaults(
 </script>
 
 <style lang="scss">
-$module-prefix: '_goods';
+$module-prefix: '_goods-component';
 
 .#{$module-prefix} {
   &__goods-picture {

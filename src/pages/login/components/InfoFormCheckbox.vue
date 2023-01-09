@@ -20,7 +20,7 @@ import { useClassName } from '@hooks/index';
 import type { CheckboxValue } from './InfoFormCheckbox';
 import { CheckedsInject, OnChangeInject } from './InfoFormCheckboxGroup';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 
 /**
  * @title 填写资料表单复选框组件
@@ -40,7 +40,7 @@ const checked = computed(() => checkeds?.value.includes(props.value));
 </script>
 
 <style lang="scss">
-$module-prefix: '_login';
+$module-prefix: '_login-component';
 .#{$module-prefix} {
   &__info-form-checkbox {
     display: flex;

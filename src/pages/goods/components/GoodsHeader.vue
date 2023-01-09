@@ -12,11 +12,11 @@
 <script setup lang="ts">
 import { useClassName } from '@hooks/index';
 
-const { className } = useClassName('_goods');
+const { className } = useClassName('_goods-component');
 </script>
 
 <style lang="scss">
-$module-prefix: '_goods';
+$module-prefix: '_goods-component';
 
 .#{$module-prefix} {
   &__goods-header {

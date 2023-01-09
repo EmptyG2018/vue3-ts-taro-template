@@ -11,7 +11,7 @@
     </view>
     <view :class="className('__spec-radio__cell')">
       <view :class="className('__spec-radio__label')">{{ label }}</view>
-      <view :class="className('__spec-radio__value')">{{ value }}</view>
+      <view :class="className('__spec-radio__value')">{{ desc }}</view>
     </view>
   </view>
 </template>
@@ -25,7 +25,7 @@ import { CheckedInject, OnChangeInject } from './SpecRadioGroup';
 const { className } = useClassName('_mx');
 
 /**
- * @title 填写资料表单复选框组件
+ * @title 规格单选框组件
  * @param thumb 图片
  * @param label 标签
  * @param desc 描述
@@ -51,9 +51,12 @@ $module-prefix: '_mx';
   &__spec-radio {
     display: flex;
     align-items: center;
-    padding: 14px 16px;
     border: 1px solid #2a2a2a;
     border-radius: 6px;
+    &--active {
+      border-color: #fd3b68;
+      color: #fd3b68;
+    }
     &__thumb {
       width: 48px;
       height: 48px;
@@ -65,6 +68,13 @@ $module-prefix: '_mx';
     }
     &__cell {
       margin-left: 15px;
+    }
+    &__label,
+    &__value {
+      font-size: 14px;
+    }
+    &__value {
+      font-weight: 600;
     }
   }
 }

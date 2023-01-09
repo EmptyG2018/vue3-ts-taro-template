@@ -33,7 +33,7 @@
 import { useClassName } from '@hooks/index';
 import type { ProcessKey, ProcessItem } from './ProcessCard';
 
-const { className } = useClassName('_login');
+const { className } = useClassName('_login-component');
 
 /**
  * @title 登录流程组件
@@ -60,7 +60,7 @@ const checkedSelected = (record: ProcessItem) => record.key === props.activeKey;
 </script>
 
 <style lang="scss">
-$module-prefix: '_login';
+$module-prefix: '_login-component';
 .#{$module-prefix} {
   &__process-card {
     background-color: #fff;

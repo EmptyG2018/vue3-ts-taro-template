@@ -17,6 +17,10 @@ import { useClassName } from '@hooks/index';
 
 const { className } = useClassName('_mx');
 
+/**
+ * @title 安全区组件
+ * @param position 安全区位置（both：两者，bottom: 下方，top：上方）
+ */
 withDefaults(
   defineProps<{
     position?: 'top' | 'bottom' | 'both';
